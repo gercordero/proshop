@@ -1,4 +1,6 @@
 import React from "react";
+import { Link as RouterLink } from "react-router-dom";
+import Link from "@material-ui/core/Link";
 import { Rating } from "../";
 import {
   StyledCard,
@@ -38,16 +40,16 @@ const Product = ({
   return (
     <StyledCard>
       <CardActionArea>
-        <a href={`/product/${_id}`}>
+        <Link component={RouterLink} to={`/product/${_id}`}>
           <StyledCardMedia image={image} title="Paella dish" />
-        </a>
+        </Link>
       </CardActionArea>
       <StyledCardContent>
-        <a href={`/product/${_id}`}>
+        <Link component={RouterLink} to={`/product/${_id}`}>
           <Typography gutterBottom variant="h6" component="h2">
             {name}
           </Typography>
-        </a>
+        </Link>
         <Rating value={rating} text={` ${numReviews} reviews`} />
         <Typography variant="h4" component="h2">
           {`$${price}`}

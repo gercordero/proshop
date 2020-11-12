@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link as RouterLink } from "react-router-dom";
+import Link from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
 import { FaBars } from "react-icons/fa";
 import {
@@ -17,11 +19,11 @@ const Navbar = () => {
     <StyledNav>
       <StyledContainer>
         <StyledHeader>
-          <a href="/">
+          <Link component={RouterLink} to="/">
             <Typography variant="h5" component="h1">
               proshop
             </Typography>
-          </a>
+          </Link>
         </StyledHeader>
         <ToggleBtnContainer>
           <ToggleBtn type="button" onClick={() => setIsOpen(!isOpen)}>
