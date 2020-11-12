@@ -1,0 +1,9 @@
+import styled from "styled-components";
+
+export const StarsContainer = styled.div`
+  margin: 0.5rem 0;
+
+  & span {
+    margin: 0 0.1rem;
+  }
+`;

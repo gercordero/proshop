@@ -11,7 +11,7 @@ const HomePage = () => {
       <Container>
         <Grid container spacing={3}>
           {products.map((product) => (
-            <Grid item xs={12} sm={6} md={4} key={product._id}>
+            <Grid item xs={12} sm={6} md={4} lg={3} key={product._id}>
               <Product {...product} />
             </Grid>
           ))}
