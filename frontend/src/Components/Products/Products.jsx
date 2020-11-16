@@ -1,12 +1,12 @@
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import Link from "@material-ui/core/Link";
-import { Rating } from "../";
+import { Rating } from "..";
 import {
   StyledCard,
   StyledCardMedia,
   StyledCardContent,
-} from "./styles/Product.styles";
+} from "./styles/Products.styles";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import Typography from "@material-ui/core/Typography";
 
@@ -24,7 +24,7 @@ import Typography from "@material-ui/core/Typography";
  * @param {any type} rest - the rest of the props if any
  */
 
-const Product = ({
+const Products = ({
   _id,
   name,
   image,
@@ -50,7 +50,7 @@ const Product = ({
             {name}
           </Typography>
         </Link>
-        <Rating value={rating} text={` ${numReviews} reviews`} />
+        <Rating rating={rating} numReviews={numReviews} />
         <Typography variant="h4" component="h2">
           {`$${price}`}
         </Typography>
@@ -59,4 +59,4 @@ const Product = ({
   );
 };
 
-export default Product;
+export default Products;

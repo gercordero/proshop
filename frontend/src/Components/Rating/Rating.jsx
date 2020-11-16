@@ -5,25 +5,25 @@ import { StarsContainer } from "./styles/Rating.styles";
 
 /**
  * @param {integer} value - the average rating value
- * @param {string} text - the number of reviews to put next to the stars rating
+ * @param {string} numReviews - the number of reviews to put next to the stars rating
  */
-const Rating = ({ value, text }) => {
+const Rating = ({ rating, numReviews }) => {
   // There are 5 stars and the maximun rating that we can have is 5
-  const values = [1, 2, 3, 4, 5];
+  const ratings = [1, 2, 3, 4, 5];
 
   return (
     <StarsContainer>
-      {values.map((desiredValue, index) => (
-        <Star key={index} value={value} desiredValue={desiredValue} />
+      {ratings.map((desiredRating, index) => (
+        <Star key={index} rating={rating} desiredRating={desiredRating} />
       ))}
-      <span>{text && text}</span>
+      <span>{numReviews && ` ${numReviews} reviews`}</span>
     </StarsContainer>
   );
 };
 
 Rating.propTypes = {
-  value: PropTypes.number.isRequired,
-  text: PropTypes.string,
+  rating: PropTypes.number.isRequired,
+  numReviews: PropTypes.number,
 };
 
 export default Rating;

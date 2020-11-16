@@ -5,18 +5,18 @@ import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 const yellow = { color: "#ffd700" }; //Gold color
 
 /**
- * @param {integer} value - the average rating value
- * @param {integer} desiredValue - the maximun value that a star needs to be a full star
+ * @param {integer} rating - the average rating of the product
+ * @param {integer} desiredRating - the maximun rating that a star needs to be a full star
  */
 
-const Star = ({ value, desiredValue }) => {
+const Star = ({ rating, desiredRating }) => {
   return (
     <span>
-      {/* If value >= 1 show full star, else if >= show half star, else empty star */}
+      {/* If rating >= 1 show full star, else if >= show half star, else empty star */}
 
-      {value >= desiredValue ? (
+      {rating >= desiredRating ? (
         <FaStar style={yellow} />
-      ) : value >= desiredValue - 0.5 ? (
+      ) : rating >= desiredRating - 0.5 ? (
         <FaStarHalfAlt style={yellow} />
       ) : (
         <FaRegStar style={yellow} />
@@ -26,8 +26,8 @@ const Star = ({ value, desiredValue }) => {
 };
 
 Star.prototypes = {
-  value: PropTypes.number.isRequired,
-  desiredValue: PropTypes.number.isRequired,
+  rating: PropTypes.number.isRequired,
+  desiredRating: PropTypes.number.isRequired,
 };
 
 export default Star;
