@@ -43,7 +43,7 @@ export const StyledNavLinks = styled(NavLinks)`
     }
   }
 
-  ${(props) => props.theme.breakpoints.up("md")} {
+  ${(props) => props.theme.breakpoints.up("sm")} {
     grid-column: 2/3;
     display: flex;
     flex-direction: row;
@@ -61,7 +61,7 @@ export const ToggleBtnContainer = styled.div`
   justify-content: flex-end;
   align-items: center;
 
-  ${(props) => props.theme.breakpoints.up("md")} {
+  ${(props) => props.theme.breakpoints.up("sm")} {
     display: none;
   }
 `;
