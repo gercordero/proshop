@@ -1,7 +1,9 @@
-const express = require("express");
-const path = require("path");
-const cors = require("cors");
-require("dotenv").config();
+import express from "express";
+import path from "path";
+import cors from "cors";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 //Initializations
 const app = express();
@@ -15,7 +17,7 @@ app.use(express.json());
 app.use(cors());
 
 //Routes
-const products = require("./routes/api/products");
+import products from "./routes/api/products.js";
 
 //Use Routes
 app.use("/api/products", products);

@@ -1,7 +1,10 @@
-const express = require("express");
-const router = express.Router();
+// Express
+import express, { Router } from "express";
 // DATA
-const products = require("../../data/products");
+import products from "../../data/products.js";
+
+// Router instance
+const router = Router();
 
 // @route   GET api/produtcs/test
 // @desc    Tests products route
@@ -23,4 +26,4 @@ router.get("/:id", (req, res) => {
   res.json(product);
 });
 
-module.exports = router;
+export default router;
