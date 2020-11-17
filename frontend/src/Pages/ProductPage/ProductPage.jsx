@@ -17,7 +17,7 @@ const ProductPage = ({ match, ...rest }) => {
     };
 
     fetchSingleProduct(match.params.id);
-  }, []);
+  }, [match]);
 
   return (
     <ProductPageSection>

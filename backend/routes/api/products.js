@@ -12,7 +12,6 @@ router.get("/test", (req, res) => res.json({ msg: "Products Works" }));
 // @desc    Get products
 // @access  Public
 router.get("/", (req, res) => {
-  console.log("FETCHING");
   res.json(products);
 });
 
