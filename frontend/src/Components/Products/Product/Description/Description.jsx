@@ -9,7 +9,6 @@ import { Rating } from "../../../";
 
 const Description = ({ product, ...rest }) => {
   const { name, description, price, rating, numReviews } = product;
-
   return (
     <>
       <ListItem alignItems="flex-start">

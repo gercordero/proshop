@@ -1,11 +1,25 @@
-import React from "react";
-import { HomePageSection } from "./styles/HomePage.styles";
+import React, { useState, useEffect } from "react";
+// Components
 import { Products } from "../../Components";
+// Material UI
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
-import products from "../../products";
+// Styles
+import { HomePageSection } from "./styles/HomePage.styles";
+// Get Products
+import { getProducts } from "../../api/products";
 
 const HomePage = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      setProducts(await getProducts());
+    };
+
+    fetchProducts();
+  }, []);
+
   return (
     <HomePageSection>
       <Container>
