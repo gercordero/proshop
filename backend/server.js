@@ -1,9 +1,13 @@
 import express from "express";
-import path from "path";
-import cors from "cors";
 import dotenv from "dotenv";
+import cors from "cors";
+import connectDB from "./config/db.js";
 
+// Configure dotenv
 dotenv.config();
+
+// Connect to MongoDB
+connectDB();
 
 //Initializations
 const app = express();
