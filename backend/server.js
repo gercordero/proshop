@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import connectDB from "./config/db.js";
+import { errorsHandler, notFound } from "./middleware/errors.js";
 
 // Configure dotenv
 dotenv.config();
@@ -25,6 +26,10 @@ import products from "./routes/api/products.js";
 
 //Use Routes
 app.use("/api/products", products);
+
+// Errors Handlers
+app.use(notFound);
+app.use(errorsHandler);
 
 //Start server
 app.listen(app.get("port"), () => {
