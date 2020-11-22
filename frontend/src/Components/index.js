@@ -4,3 +4,4 @@ export { default as Layout } from "./Layout/Layout";
 export { default as Products } from "./Products/Products";
 export { default as Product } from "./Products/Product/Product";
 export { default as Rating } from "./Rating/Rating";
+export { default as Progress } from "./Progress/Progress";
