@@ -41,7 +41,7 @@ const Products = ({
     <StyledCard>
       <CardActionArea>
         <Link component={RouterLink} to={`/product/${_id}`}>
-          <StyledCardMedia image={image} title="Paella dish" />
+          <StyledCardMedia image={image} title={name} />
         </Link>
       </CardActionArea>
       <StyledCardContent>

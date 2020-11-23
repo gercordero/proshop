@@ -14,7 +14,13 @@ const widthStyle = { width: "100%" };
 // Order of appearance in screen size 'lg' is 1 | 2 | 3 (from left to Right)
 // When the screen size is 'sm' then the grid appers in the order 1 -> 3 -> 2 (from left to Right)
 // When the screen size is 'xs' then the grid appers in the order 1->2->3 (from top to bottom)
-const Product = ({ product, ...rest }) => {
+const Product = ({
+  product,
+  quantity,
+  setQuantity,
+  addToCartHandler,
+  ...rest
+}) => {
   const { image } = product;
   return (
     <Grid container spacing={3}>
@@ -35,7 +41,12 @@ const Product = ({ product, ...rest }) => {
           {/* ORDER */}
           <Paper variant="outlined" square>
             <List style={widthStyle}>
-              <Order product={product} />
+              <Order
+                product={product}
+                quantity={quantity}
+                setQuantity={setQuantity}
+                addToCartHandler={addToCartHandler}
+              />
             </List>
           </Paper>
         </Grid>
