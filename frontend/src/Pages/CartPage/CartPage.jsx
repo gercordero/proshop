@@ -11,6 +11,7 @@ import { CartPageSection } from "./styles/CartPage.styles";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
+import Alert from "@material-ui/lab/Alert";
 
 const CartPage = ({ match, location, history }) => {
   // Get product id if any
@@ -41,23 +42,30 @@ const CartPage = ({ match, location, history }) => {
         <Typography variant="h2" gutterBottom>
           Shopping cart
         </Typography>
-        <Grid container spacing={3}>
-          <Grid container item md={9} spacing={3}>
-            {cartItems &&
-              cartItems.map((item) => (
-                <Grid key={item.product} item md={12}>
-                  <CartItem
-                    item={item}
-                    dispatch={dispatch}
-                    removeFromCartHandler={removeFromCartHandler}
-                  />
-                </Grid>
-              ))}
+        {cartItems.length > 0 ? (
+          <Grid container spacing={3}>
+            <Grid container item md={9} spacing={3}>
+              {cartItems &&
+                cartItems.map((item) => (
+                  <Grid key={item.product} item md={12}>
+                    <CartItem
+                      item={item}
+                      dispatch={dispatch}
+                      removeFromCartHandler={removeFromCartHandler}
+                    />
+                  </Grid>
+                ))}
+            </Grid>
+            <Grid item md={3}>
+              <SubTotal
+                cartItems={cartItems}
+                checkOutHandler={checkOutHandler}
+              />
+            </Grid>
           </Grid>
-          <Grid item md={3}>
-            <SubTotal cartItems={cartItems} checkOutHandler={checkOutHandler} />
-          </Grid>
-        </Grid>
+        ) : (
+          <Alert severity="info">Your cart is empty!</Alert>
+        )}
       </Container>
     </CartPageSection>
   );
