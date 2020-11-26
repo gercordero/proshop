@@ -21,8 +21,8 @@ import Typography from "@material-ui/core/Typography";
  * @param {integer} countInStock - the amount of stock of the product
  * @param {float} rating - the rating of the product
  * @param {integer} numReviews - the amount of reviews of the product
- * @param {any type} rest - the rest of the props if any
- */
+ * @param {object} rest - the rest of the props if any
+ **/
 
 const Products = ({
   _id,

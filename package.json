@@ -16,20 +16,15 @@
   "author": "German Cordero",
   "license": "MIT",
   "dependencies": {
-    "@material-ui/lab": "^4.0.0-alpha.56",
     "bcrypt": "^5.0.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
-    "mongoose": "^5.10.15",
-    "react-redux": "^7.2.2",
-    "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
+    "mongoose": "^5.10.15"
   },
   "devDependencies": {
     "concurrently": "^5.3.0",
-    "nodemon": "^2.0.6",
-    "redux-devtools-extension": "^2.13.8"
+    "nodemon": "^2.0.6"
   }
 }

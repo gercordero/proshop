@@ -8,7 +8,7 @@ import {
   SINGLE_PRODUCT_FAIL,
 } from "../constants/productConstants";
 
-const url = "http://localhost:4000/api/products";
+const url = `${process.env.REACT_APP_BACKEND_URL}/api/products`;
 
 // Get products list
 export const listProducts = () => async (dispatch) => {

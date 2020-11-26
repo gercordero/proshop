@@ -4,7 +4,7 @@ import { ThemeProvider as MuiThemeProvider } from "@material-ui/styles";
 import { ThemeProvider } from "styled-components";
 import theme from "./styles/theme";
 import { Layout } from "./Components/";
-import { HomePage, ProductPage } from "./Pages";
+import { HomePage, ProductPage, CartPage } from "./Pages";
 
 function App() {
   return (
@@ -14,6 +14,7 @@ function App() {
           <Layout>
             <Route path="/" component={HomePage} exact />
             <Route path="/product/:id" component={ProductPage} />
+            <Route path="/cart/:id?" component={CartPage} />
           </Layout>
         </ThemeProvider>
       </MuiThemeProvider>

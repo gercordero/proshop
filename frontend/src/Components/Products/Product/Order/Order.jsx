@@ -7,6 +7,13 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 
+/**
+ * @param {object} product - An object that contains all the product details
+ * @param {integer} quantity - The quantity state from ProductPage
+ * @param {function} setQuantity - The set quantity state fuction from ProductPage
+ * @param {function} addToCartHandler - A function for adding current Product to the Cart
+ * @param {object} rest - the rest of the props if any
+ **/
 const Order = ({
   product,
   quantity,
