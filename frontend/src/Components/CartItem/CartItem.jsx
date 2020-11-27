@@ -22,17 +22,19 @@ const CartItem = ({ item, dispatch, removeFromCartHandler }) => {
   return (
     <>
       <Grid container spacing={3} style={{ padding: "1rem 0" }}>
-        <GridItem item md={1}>
+        <GridItem item xs={6} sm={3} md={2}>
           {/* PRODUCT IMAGE */}
-          <img src={item.image} alt={item.name} style={{ width: "100%" }} />
+          <Link component={RouterLink} to={`/product/${item.product}`}>
+            <img src={item.image} alt={item.name} style={{ width: "100%" }} />
+          </Link>
         </GridItem>
-        <GridItem item md={2}>
+        <GridItem item xs={6} sm={3} md={2}>
           {/* PRODUCT NAME */}
           <Link component={RouterLink} to={`/product/${item.product}`}>
             <Typography variant="body2">{item.name}</Typography>
           </Link>
         </GridItem>
-        <GridItem item md={1}>
+        <GridItem item xs={2} sm={1} md={1}>
           {/* PRODUCT PRICE */}
           <Typography variant="body2" style={{ fontWeight: "bold" }}>
             {"$" +
@@ -40,16 +42,17 @@ const CartItem = ({ item, dispatch, removeFromCartHandler }) => {
                 100}
           </Typography>
         </GridItem>
-        <GridItem item md={3}>
+        <GridItem item xs={7} sm={3} md={3}>
           {/* PRODUCT QUANTITY SELECTOR */}
           <QuantitySelector
             countInStock={item.countInStock}
             quantity={item.quantity}
             dispatch={dispatch}
             id={item.product}
+            styles={{ marginLeft: "1rem" }}
           />
         </GridItem>
-        <GridItem item md={1} style={{ marginLeft: "auto" }}>
+        <GridItem item xs={3} sm={2} md={1} style={{ marginLeft: "auto" }}>
           {/* REMOVE PRODUCT */}
           <Button onClick={() => removeFromCartHandler(item.product)}>
             <FaTrash />

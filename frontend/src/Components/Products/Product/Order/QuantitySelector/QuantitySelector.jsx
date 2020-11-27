@@ -15,6 +15,7 @@ import Divider from "@material-ui/core/Divider";
  * @param {function} setQuantity - The set quantity state fuction from ProductPage.
  * @param {function} dispatch - Function for updating CartPage state.
  * @param {function} id - The id of the product that is needed for dispatch to work properly is used only when Quantity selector is call from CartPage.
+ * @param {object} styles - Styles that comes from CartItem. It's for responsive reasons
  * @param {object} rest - the rest of the props if any.
  **/
 const QuantitySelector = ({
@@ -23,14 +24,19 @@ const QuantitySelector = ({
   setQuantity,
   dispatch,
   id,
+  styles,
   ...rest
 }) => {
   return (
     <>
       <ListItem alignItems="flex-start">
         <ListItemText primary="Quantity:" />
-        <FormControl required style={{ flex: "1 1 auto", marginLeft: "-2rem" }}>
+        <FormControl
+          required
+          style={styles ? styles : { flex: "1 1 auto", marginLeft: "-2rem" }}
+        >
           <Select
+            style={{ width: "3rem" }}
             id="quantity-select"
             value={quantity}
             onChange={(e) => {
