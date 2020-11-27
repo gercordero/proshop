@@ -1,5 +1,5 @@
 // Express
-import express, { Router } from "express";
+import { Router } from "express";
 // Import product controllers
 import {
   getProducts,

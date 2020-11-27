@@ -1,6 +1,6 @@
 // Async Handler minddleware
 import asyncHandler from "express-async-handler";
-// DATA
+// Product model
 import Product from "../models/productModel.js";
 
 // @route   GET api/produtcs

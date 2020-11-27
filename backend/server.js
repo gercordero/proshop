@@ -23,9 +23,11 @@ app.use(cors());
 
 //Routes
 import products from "./routes/api/products.js";
+import users from "./routes/api/users.js";
 
 //Use Routes
 app.use("/api/products", products);
+app.use("/api/users", users);
 
 // Errors Handlers
 app.use(notFound);
