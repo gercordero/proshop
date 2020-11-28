@@ -1,7 +1,11 @@
 // Express
 import { Router } from "express";
 // Import users controllers
-import { authUSer, getUserProfile } from "../../controllers/userContorller.js";
+import {
+  authUSer,
+  getUserProfile,
+  registerUser,
+} from "../../controllers/userContorller.js";
 // Protect private route
 import { protect } from "../../middleware/authMiddleware.js";
 
@@ -24,5 +28,10 @@ router.post("/login", authUSer);
 // @desc    Get user profile
 // @access  Private
 router.route("/profile").get(protect, getUserProfile);
+
+// @route   POST api/users
+// @desc    Register a new user
+// @access  Public
+router.post("/", registerUser);
 
 export default router;
