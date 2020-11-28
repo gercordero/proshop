@@ -1,7 +1,9 @@
 // Express
 import { Router } from "express";
 // Import users controllers
-import { authUSer } from "../../controllers/userContorller.js";
+import { authUSer, getUserProfile } from "../../controllers/userContorller.js";
+// Protect private route
+import { protect } from "../../middleware/authMiddleware.js";
 
 // Router instance
 const router = Router();
@@ -17,5 +19,10 @@ router.get("/test", (req, res) => {
 // @desc    Auth user & get token
 // @access  Public
 router.post("/login", authUSer);
+
+// @route   GET api/users/profile
+// @desc    Get user profile
+// @access  Private
+router.route("/profile").get(protect, getUserProfile);
 
 export default router;
