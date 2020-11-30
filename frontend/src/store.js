@@ -6,12 +6,14 @@ import {
   singleProductReducer,
 } from "./reducers/productReducers";
 import { cartReducer } from "./reducers/cartReducer";
+import { userLoginReducer } from "./reducers/userReducer";
 
 // All reducers
 const reducer = combineReducers({
   productList: productListReducer,
   singleProduct: singleProductReducer,
   cart: cartReducer,
+  userLogin: userLoginReducer,
 });
 
 // Geting cart items from local store
@@ -19,9 +21,15 @@ const cartItemsFromLocalStorage = localStorage.getItem("cartItems")
   ? JSON.parse(localStorage.getItem("cartItems"))
   : [];
 
+// Getting logged in user info from local storage
+const userInfoFromLocalStorage = localStorage.getItem("userInfo")
+  ? JSON.parse(localStorage.getItem("userInfo"))
+  : null;
+
 // Initial state
 const initialState = {
   cart: { cartItems: cartItemsFromLocalStorage },
+  userLogin: { userInfo: userInfoFromLocalStorage },
 };
 
 // ALl middlewares
