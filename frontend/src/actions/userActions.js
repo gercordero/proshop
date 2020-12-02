@@ -8,7 +8,8 @@ import {
 
 const url = `${process.env.REACT_APP_BACKEND_URL}/api/users`;
 
-export const userLogin = ((email, password) = async (dispatch) => {
+//Login user action
+export const loginUser = (email, password) => async (dispatch) => {
   try {
     // Dispatch login request
     dispatch({ type: USER_LOGIN_REQUEST });
@@ -16,13 +17,13 @@ export const userLogin = ((email, password) = async (dispatch) => {
     // Set config var for post request
     const config = {
       headers: {
-        "Content-Type": "apliccation/json",
+        "Content-Type": "application/json",
       },
     };
 
     // Send post request for login the user
     const { data: user } = await axios.post(
-      url + "/login",
+      `${url}/login`,
       { email, password },
       config
     );
@@ -41,4 +42,10 @@ export const userLogin = ((email, password) = async (dispatch) => {
           : error.message,
     });
   }
-});
+};
+
+// Logout use action
+export const logoutUser = () => (dispatch) => {
+  localStorage.removeItem("userInfo");
+  dispatch({ type: USER_LOGOUT });
+};

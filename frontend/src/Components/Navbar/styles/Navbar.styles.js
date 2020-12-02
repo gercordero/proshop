@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Container from "@material-ui/core/Container";
-import NavLinks from "../../../constants/links";
+import NavLinks from "../NavLinks/NavLinks";
 
 export const StyledNav = styled.nav`
   width: 100vw;
@@ -30,6 +30,11 @@ export const StyledNavLinks = styled(NavLinks)`
   flex-direction: column;
   padding: 0;
 
+  & > li > svg {
+    align-self: center;
+    color: ${(props) => props.theme.palette.white.main};
+  }
+
   & > li {
     margin-top: 1rem;
   }
@@ -47,6 +52,7 @@ export const StyledNavLinks = styled(NavLinks)`
     grid-column: 2/3;
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: flex-end;
 
     & > li {

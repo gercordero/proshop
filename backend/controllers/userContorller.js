@@ -5,24 +5,6 @@ import User from "../models/userModel.js";
 // Token generator
 import { generateToken } from "../utils/generateToken.js";
 
-// @route   GET api/users/profile
-// @desc    Get user profile
-// @access  Private
-export const getUserProfile = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.user.id);
-
-  if (user) {
-    res.status(200).json({
-      _id: user._id,
-      name: user.name,
-      email: user.email,
-      isAdmin: user.isAdmin,
-    });
-  } else {
-    res.status(404).json({ msg: "User not found" });
-  }
-});
-
 // @route   POST api/users
 // @desc    Register a new user
 // @access  Public
@@ -83,5 +65,23 @@ export const authUSer = asyncHandler(async (req, res) => {
   } else {
     res.status(401);
     throw new Error("Invalid email");
+  }
+});
+
+// @route   GET api/users/profile
+// @desc    Get user profile
+// @access  Private
+export const getUserProfile = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user.id);
+
+  if (user) {
+    res.status(200).json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
+    });
+  } else {
+    res.status(404).json({ msg: "User not found" });
   }
 });

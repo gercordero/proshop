@@ -7,3 +7,4 @@ export { default as Product } from "./Products/Product/Product";
 export { default as Rating } from "./Rating/Rating";
 export { default as Progress } from "./Progress/Progress";
 export { default as SubTotal } from "./SubTotal/SubTotal";
+export { default as FormContainer } from "./FormContainer/FormContainer";
