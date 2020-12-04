@@ -6,15 +6,10 @@ import { useDispatch, useSelector } from "react-redux";
 // Redux action
 import { loginUser } from "../../actions/userActions";
 // Components
-import { Progress, FormContainer } from "../../Components";
+import { FormContainer, LoginForm } from "../../Components";
 // Material UI
 import Container from "@material-ui/core/Container";
-import FormControl from "@material-ui/core/FormControl";
-import Input from "@material-ui/core/Input";
-import InputLabel from "@material-ui/core/InputLabel";
-import FormHelperText from "@material-ui/core/FormHelperText";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
 // Styled components
 import { LoginPageSection } from "./styles/LoginPage.styles";
@@ -43,6 +38,15 @@ const LoginPage = ({ location, history }) => {
     dispatch(loginUser(email, password));
   };
 
+  // Props to pass to LoginForm component
+  const FormProps = {
+    submitHandler,
+    setEmail,
+    setPassword,
+    loading,
+    error,
+  };
+
   return (
     <LoginPageSection>
       <Container>
@@ -50,54 +54,8 @@ const LoginPage = ({ location, history }) => {
           <Typography variant="h3" component="h1" align="center">
             Sign in
           </Typography>
-          <form onSubmit={submitHandler}>
-            {/* EMAIL */}
-            <FormControl
-              fullWidth
-              required
-              margin="normal"
-              error={error === "Invalid email"}
-              onChange={(e) => setEmail(e.target.value)}
-            >
-              <InputLabel htmlFor="email">Email address</InputLabel>
-              <Input id="email" aria-describedby="email-helper-text" />
-              {error === "Invalid email" && (
-                <FormHelperText error id="email-helper-text">
-                  Wrong email! Are you registered?
-                </FormHelperText>
-              )}
-            </FormControl>
-            {/* PASSWORD */}
-            <FormControl
-              fullWidth
-              required
-              margin="normal"
-              error={error === "Invalid password"}
-              onChange={(e) => setPassword(e.target.value)}
-            >
-              <InputLabel htmlFor="password">Password</InputLabel>
-              <Input
-                type="password"
-                id="password"
-                aria-describedby="password-helper-text"
-              />
-              {error === "Invalid password" && (
-                <FormHelperText error id="email-helper-text">
-                  You have entered a wrong password!
-                </FormHelperText>
-              )}
-            </FormControl>
-            {/* SUBMIT */}
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              size="large"
-              style={{ width: "100%", fontWeight: "bold", margin: "16px 0" }}
-            >
-              Sign in
-            </Button>
-          </form>
+          {/* LOGIN FORM */}
+          <LoginForm {...FormProps} />
         </FormContainer>
 
         <Typography align="center">
