@@ -4,9 +4,9 @@ import { StyledProgress } from "./styles/Progress.styles";
 // Material UI
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-const Progress = () => {
+const Progress = ({ style, className, ...rest }) => {
   return (
-    <StyledProgress>
+    <StyledProgress style={style} className={className}>
       <CircularProgress />
     </StyledProgress>
   );

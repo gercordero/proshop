@@ -6,7 +6,7 @@ import {
   singleProductReducer,
 } from "./reducers/productReducers";
 import { cartReducer } from "./reducers/cartReducer";
-import { userLoginReducer } from "./reducers/userReducer";
+import { userLoginReducer, userRegisterReducer } from "./reducers/userReducer";
 
 // All reducers
 const reducer = combineReducers({
@@ -14,6 +14,7 @@ const reducer = combineReducers({
   singleProduct: singleProductReducer,
   cart: cartReducer,
   userLogin: userLoginReducer,
+  userRegister: userRegisterReducer,
 });
 
 // Geting cart items from local store

@@ -4,7 +4,13 @@ import { ThemeProvider as MuiThemeProvider } from "@material-ui/styles";
 import { ThemeProvider } from "styled-components";
 import theme from "./styles/theme";
 import { Layout } from "./Components/";
-import { HomePage, ProductPage, CartPage, LoginPage } from "./Pages";
+import {
+  HomePage,
+  ProductPage,
+  CartPage,
+  LoginPage,
+  RegisterPage,
+} from "./Pages";
 
 function App() {
   return (
@@ -15,6 +21,7 @@ function App() {
             <Route path="/product/:id" component={ProductPage} />
             <Route path="/cart/:id?" component={CartPage} />
             <Route path="/login" component={LoginPage} />
+            <Route path="/register" component={RegisterPage} />
             <Route path="/" component={HomePage} exact />
           </Layout>
         </ThemeProvider>

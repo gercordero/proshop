@@ -24,8 +24,6 @@ const NavLinks = ({ className }) => {
   ];
 
   const onChangeHandler = (event) => {
-    console.log(event.value);
-
     if (event.value === "logout") {
       dispatch(logoutUser());
     }

@@ -15,8 +15,6 @@ import InputLabel from "@material-ui/core/InputLabel";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
-import Alert from "@material-ui/lab/Alert";
 import Link from "@material-ui/core/Link";
 // Styled components
 import { LoginPageSection } from "./styles/LoginPage.styles";
