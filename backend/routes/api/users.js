@@ -3,8 +3,9 @@ import { Router } from "express";
 // Import users controllers
 import {
   authUSer,
-  getUserProfile,
   registerUser,
+  getUserProfile,
+  updateUserProfile,
 } from "../../controllers/userContorller.js";
 // Protect private route
 import { protect } from "../../middleware/authMiddleware.js";
@@ -28,6 +29,11 @@ router.post("/login", authUSer);
 // @desc    Get user profile
 // @access  Private
 router.route("/profile").get(protect, getUserProfile);
+
+// @route   PUT api/users/profile
+// @desc    Update User Profile
+// @access  Private
+router.route("/profile").put(protect, updateUserProfile);
 
 // @route   POST api/users
 // @desc    Register a new user
