@@ -29,7 +29,7 @@ const LoginForm = ({
         style={{ width: "100%", fontWeight: "bold", margin: "16px 0" }}
         disabled={loading}
       >
-        {loading ? <Progress style={{ marginBottom: "0" }} /> : "Sign up"}
+        {loading ? <Progress style={{ marginBottom: "0" }} /> : "Sign in"}
       </Button>
     </form>
   );
