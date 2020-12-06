@@ -1,12 +1,20 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
+// Middlewares
 import thunk from "redux-thunk";
+// Product reducers
 import {
   productListReducer,
   singleProductReducer,
 } from "./reducers/productReducers";
+// Cart reducers
 import { cartReducer } from "./reducers/cartReducer";
-import { userLoginReducer, userRegisterReducer } from "./reducers/userReducer";
+// User reducers
+import {
+  userLoginReducer,
+  userRegisterReducer,
+  userDetailsReducer,
+} from "./reducers/userReducers";
 
 // All reducers
 const reducer = combineReducers({
@@ -15,6 +23,7 @@ const reducer = combineReducers({
   cart: cartReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
+  userDetail: userDetailsReducer,
 });
 
 // Geting cart items from local store
