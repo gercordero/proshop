@@ -2,32 +2,16 @@ import React from "react";
 // React Router
 import { Link as RouterLink } from "react-router-dom";
 // Redux
-import { useSelector, useDispatch } from "react-redux";
-// Redux actions
-import { logoutUser } from "../../../actions/userActions";
+import { useSelector } from "react-redux";
+// Components
+import UserMenu from "./UserMenu/UserMenu";
 // Material UI
 import Link from "@material-ui/core/Link";
-// Dropdown
-import { StyledDropdown } from "./styles/NavLinks.styles";
-import "react-dropdown/style.css";
 // React icons
 import { FaShoppingCart, FaUser } from "react-icons/fa";
 
 const NavLinks = ({ className }) => {
   const { userInfo } = useSelector((state) => state.userLogin);
-
-  const dispatch = useDispatch();
-
-  const options = [
-    { value: "profile", label: "Profile" },
-    { value: "logout", label: "Logout" },
-  ];
-
-  const onChangeHandler = (event) => {
-    if (event.value === "logout") {
-      dispatch(logoutUser());
-    }
-  };
 
   return (
     <ul className={className}>
@@ -39,16 +23,7 @@ const NavLinks = ({ className }) => {
         </Link>
       </li>
       {userInfo ? (
-        <li style={{ display: "flex" }}>
-          {/* USER MENU */}
-          <FaUser />
-          <StyledDropdown
-            options={options}
-            onChange={onChangeHandler}
-            value={userInfo.name}
-            placeholder="Select an option"
-          />
-        </li>
+        <UserMenu name={userInfo.name} />
       ) : (
         <li>
           {/* LOGIN */}

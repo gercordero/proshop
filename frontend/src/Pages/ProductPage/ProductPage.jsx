@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
+// Components
+import { Product, Progress } from "../../Components";
 // Meterial Ui
 import Container from "@material-ui/core/Container";
 import Alert from "@material-ui/lab/Alert";
-// Component
-import { Product, Progress } from "../../Components";
-// Styles
-import { ProductPageSection } from "./styles/ProductPage.Styles";
+// Styled components
+import { PageSection } from "../styles/PageSection";
 // Single Product Data
 import { singleProduct as productAction } from "../../actions/productActions";
 
@@ -29,7 +29,7 @@ const ProductPage = ({ match, history, ...rest }) => {
   };
 
   return (
-    <ProductPageSection>
+    <PageSection>
       <Container>
         {loading ? (
           <Progress />
@@ -44,7 +44,7 @@ const ProductPage = ({ match, history, ...rest }) => {
           />
         )}
       </Container>
-    </ProductPageSection>
+    </PageSection>
   );
 };
 

@@ -12,7 +12,7 @@ import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
 // Styled components
-import { LoginPageSection } from "./styles/LoginPage.styles";
+import { PageSection } from "../styles/PageSection";
 
 const LoginPage = ({ location, history }) => {
   const [email, setEmail] = useState("");
@@ -48,7 +48,7 @@ const LoginPage = ({ location, history }) => {
   };
 
   return (
-    <LoginPageSection>
+    <PageSection>
       <Container>
         <FormContainer>
           <Typography variant="h3" component="h1" align="center">
@@ -68,7 +68,7 @@ const LoginPage = ({ location, history }) => {
           </Link>
         </Typography>
       </Container>
-    </LoginPageSection>
+    </PageSection>
   );
 };
 

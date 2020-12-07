@@ -8,8 +8,8 @@ import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import Alert from "@material-ui/lab/Alert";
-// Styles
-import { HomePageSection } from "./styles/HomePage.styles";
+// Styled components
+import { PageSection } from "../styles/PageSection";
 // Products Data
 import { listProducts } from "../../actions/productActions";
 
@@ -23,7 +23,7 @@ const HomePage = () => {
   }, [dispatch]);
 
   return (
-    <HomePageSection>
+    <PageSection>
       <Container>
         <Typography variant="h2" gutterBottom>
           Latest products
@@ -42,7 +42,7 @@ const HomePage = () => {
           </Grid>
         )}
       </Container>
-    </HomePageSection>
+    </PageSection>
   );
 };
 

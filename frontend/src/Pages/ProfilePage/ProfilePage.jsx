@@ -4,9 +4,9 @@ import { Link as RouterLink } from "react-router-dom";
 // Redux methods
 import { useDispatch, useSelector } from "react-redux";
 // Redux action
-import { registerUser } from "../../actions/userActions";
+import { getUserDetails } from "../../actions/userActions";
 // Components
-import { FormContainer, RegisterForm } from "../../Components";
+import { RegisterForm as UpdateUserForm } from "../../Components";
 // Material UI
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
@@ -14,29 +14,35 @@ import Link from "@material-ui/core/Link";
 import Alert from "@material-ui/lab/Alert";
 // Styled components
 import { PageSection } from "../styles/PageSection";
+import { Grid } from "@material-ui/core";
 
-const RegisterPage = ({ location, history }) => {
+const ProfilePage = ({ history }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState(null);
 
-  // Redirect if necesary
-  const redirect = location.search ? location.search.split("=")[1] : "";
-
   // Redux state
   const dispatch = useDispatch();
-  const { loading, error, userInfo } = useSelector(
-    (state) => state.userRegister
-  );
+  const { loading, error, user } = useSelector((state) => state.userDetails);
+  const { userInfo } = useSelector((state) => state.userLogin);
 
-  // Use effect used to redirect user to another page if it's already loged in
   useEffect(() => {
-    if (userInfo) {
-      history.push(redirect);
+    // Redirect user to another page if it isn't loged in
+    if (!userInfo) {
+      history.push("/login");
+    } else {
+      // If it's loged then we fire off dispatch("profile") to get the user details
+      // And then the page will re-render and go into the "else" filling the fields automaticly
+      if (!user) {
+        dispatch("profile");
+      } else {
+        setName(user.name);
+        setEmail(user.email);
+      }
     }
-  }, [history, userInfo, redirect]);
+  }, [history, dispatch, user, userInfo]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -62,35 +68,17 @@ const RegisterPage = ({ location, history }) => {
   return (
     <PageSection>
       <Container>
-        <FormContainer>
-          <Typography variant="h3" component="h1" align="center">
-            Sign up
-          </Typography>
-          {error && (
-            <Alert severity="error" style={{ marginTop: "30px" }}>
-              {error}
-            </Alert>
-          )}
-          {message && (
-            <Alert severity="error" style={{ marginTop: "30px" }}>
-              {message}
-            </Alert>
-          )}
-          <RegisterForm {...FormProps} />
-        </FormContainer>
-
-        <Typography align="center">
-          {"Already a Customer? "}
-          <Link
-            component={RouterLink}
-            to={redirect ? `/login?redirect=${redirect}` : `/login`}
-          >
-            <strong>Log in</strong>
-          </Link>
-        </Typography>
+        <Grid container spacing={3}>
+          {/* Update profile form*/}
+          <Grid item md={3}>
+            <UpdateUserForm {...FormProps} />
+          </Grid>
+          {/* User orders */}
+          <Grid item md={9}></Grid>
+        </Grid>
       </Container>
     </PageSection>
   );
 };
 
-export default RegisterPage;
+export default ProfilePage;

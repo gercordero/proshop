@@ -5,13 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../../actions/cartActions";
 // Component
 import { CartItem, SubTotal } from "../../Components";
-// Styled
-import { CartPageSection } from "./styles/CartPage.styles";
 // Meterial UI
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Alert from "@material-ui/lab/Alert";
+// Styled components
+import { PageSection } from "../styles/PageSection";
 
 const CartPage = ({ match, location, history }) => {
   // Get product id if any
@@ -37,7 +37,7 @@ const CartPage = ({ match, location, history }) => {
   };
 
   return (
-    <CartPageSection>
+    <PageSection>
       <Container>
         <Typography variant="h2" gutterBottom>
           Shopping cart
@@ -67,7 +67,7 @@ const CartPage = ({ match, location, history }) => {
           <Alert severity="info">Your cart is empty!</Alert>
         )}
       </Container>
-    </CartPageSection>
+    </PageSection>
   );
 };
 
