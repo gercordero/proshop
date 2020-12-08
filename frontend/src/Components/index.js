@@ -10,3 +10,4 @@ export { default as SubTotal } from "./SubTotal/SubTotal";
 export { default as FormContainer } from "./FormContainer/FormContainer";
 export { default as LoginForm } from "./LoginForm/LoginForm";
 export { default as RegisterForm } from "./RegisterForm/RegisterForm";
+export { default as UpdateForm } from "./UpdateForm/UpdateForm";

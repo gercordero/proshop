@@ -10,6 +10,7 @@ import {
   CartPage,
   LoginPage,
   RegisterPage,
+  ProfilePage,
 } from "./Pages";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <Route path="/cart/:id?" component={CartPage} />
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={RegisterPage} />
+            <Route path="/profile" component={ProfilePage} />
             <Route path="/" component={HomePage} exact />
           </Layout>
         </ThemeProvider>

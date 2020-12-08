@@ -56,7 +56,6 @@ const RegisterPage = ({ location, history }) => {
     setEmail,
     setPassword,
     setConfirmPassword,
-    setMessage,
   };
 
   return (

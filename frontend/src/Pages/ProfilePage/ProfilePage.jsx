@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
-// Router
-import { Link as RouterLink } from "react-router-dom";
 // Redux methods
 import { useDispatch, useSelector } from "react-redux";
 // Redux action
 import { getUserDetails } from "../../actions/userActions";
 // Components
-import { RegisterForm as UpdateUserForm } from "../../Components";
+import { UpdateForm } from "../../Components";
+// Validate fields
+import validateFields from "./validation/validateFields";
 // Material UI
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import Link from "@material-ui/core/Link";
 import Alert from "@material-ui/lab/Alert";
 // Styled components
 import { PageSection } from "../styles/PageSection";
@@ -21,7 +20,7 @@ const ProfilePage = ({ history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [message, setMessage] = useState(null);
+  const [message, setMessage] = useState([]);
 
   // Redux state
   const dispatch = useDispatch();
@@ -36,7 +35,7 @@ const ProfilePage = ({ history }) => {
       // If it's loged then we fire off dispatch("profile") to get the user details
       // And then the page will re-render and go into the "else" filling the fields automaticly
       if (!user) {
-        dispatch("profile");
+        dispatch(getUserDetails("profile"));
       } else {
         setName(user.name);
         setEmail(user.email);
@@ -45,24 +44,33 @@ const ProfilePage = ({ history }) => {
   }, [history, dispatch, user, userInfo]);
 
   const submitHandler = (e) => {
+    // Prevent page redirection
     e.preventDefault();
-    if (password !== confirmPassword) {
-      setMessage("Passwords do not match.");
+    // Set message to an empty array to clear previus errors
+    setMessage([]);
+    // Validate all fields
+    const fieldsErrors = validateFields(name, email, password, confirmPassword);
+    // If we ge any errors we put it on the message state
+    if (fieldsErrors.length > 0) {
+      setMessage([...message, ...fieldsErrors]);
+      //Else we dispatch the user Update
     } else {
+      console.log("GOOD!");
       // Dispatch login
-      dispatch(registerUser(name, email, password));
+      // dispatch(getUserDetails(name, email, password));
     }
   };
 
   // Props to pass to RegisterForm component
   const FormProps = {
     loading,
+    name,
+    email,
     submitHandler,
     setName,
     setEmail,
     setPassword,
     setConfirmPassword,
-    setMessage,
   };
 
   return (
@@ -71,10 +79,35 @@ const ProfilePage = ({ history }) => {
         <Grid container spacing={3}>
           {/* Update profile form*/}
           <Grid item md={3}>
-            <UpdateUserForm {...FormProps} />
+            <Typography variant="h4" component="h2">
+              User profile
+            </Typography>
+            {/* ERROR MESSAGE */}
+            {error && (
+              <Alert severity="error" style={{ marginTop: "30px" }}>
+                {error}
+              </Alert>
+            )}
+            {/* ERROR MESSAGE */}
+            {message.length > 0 &&
+              message.map((msg, index) => (
+                <Alert
+                  key={index}
+                  severity="error"
+                  style={{ marginTop: "30px" }}
+                >
+                  {msg}
+                </Alert>
+              ))}
+            {/* Update form */}
+            <UpdateForm {...FormProps} />
           </Grid>
           {/* User orders */}
-          <Grid item md={9}></Grid>
+          <Grid item md={9}>
+            <Typography variant="h4" component="h2">
+              My orders
+            </Typography>
+          </Grid>
         </Grid>
       </Container>
     </PageSection>

@@ -6,11 +6,10 @@ import { useDispatch } from "react-redux";
 // Redux actions
 import { logoutUser } from "../../../../actions/userActions";
 // Material UI
-import Link from "@material-ui/core/Link";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 // Styled components
-import { MenuButton } from "./styles/UserMenu.styles";
+import { MenuButton, StyledLink } from "./styles/UserMenu.styles";
 // React icons
 import { FaUser } from "react-icons/fa";
 
@@ -50,9 +49,9 @@ const UserMenu = ({ name }) => {
         onClose={handleClose}
       >
         <MenuItem onClick={handleClose}>
-          <Link component={RouterLink} to="/profile">
+          <StyledLink component={RouterLink} to="/profile">
             Profile
-          </Link>
+          </StyledLink>
         </MenuItem>
         <MenuItem onClick={handleLogout}>Logout</MenuItem>
       </Menu>
