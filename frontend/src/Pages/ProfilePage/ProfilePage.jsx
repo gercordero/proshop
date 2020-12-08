@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 // Redux methods
 import { useDispatch, useSelector } from "react-redux";
 // Redux action
-import { getUserDetails } from "../../actions/userActions";
+import { getUserDetails, updateUser } from "../../actions/userActions";
+// Redux constants
+import { USER_UPDATE_PROFILE_RESET } from "../../constants/userConstants";
 // Components
 import { UpdateForm } from "../../Components";
 // Validate fields
@@ -26,6 +28,7 @@ const ProfilePage = ({ history }) => {
   const dispatch = useDispatch();
   const { loading, error, user } = useSelector((state) => state.userDetails);
   const { userInfo } = useSelector((state) => state.userLogin);
+  const { success } = useSelector((state) => state.userUpdateProfile);
 
   useEffect(() => {
     // Redirect user to another page if it isn't loged in
@@ -34,14 +37,15 @@ const ProfilePage = ({ history }) => {
     } else {
       // If it's loged then we fire off dispatch("profile") to get the user details
       // And then the page will re-render and go into the "else" filling the fields automaticly
-      if (!user) {
+      if (!user || !user.name || success) {
+        dispatch({ type: USER_UPDATE_PROFILE_RESET });
         dispatch(getUserDetails("profile"));
       } else {
         setName(user.name);
         setEmail(user.email);
       }
     }
-  }, [history, dispatch, user, userInfo]);
+  }, [history, dispatch, user, userInfo, success]);
 
   const submitHandler = (e) => {
     // Prevent page redirection
@@ -55,9 +59,8 @@ const ProfilePage = ({ history }) => {
       setMessage([...message, ...fieldsErrors]);
       //Else we dispatch the user Update
     } else {
-      console.log("GOOD!");
-      // Dispatch login
-      // dispatch(getUserDetails(name, email, password));
+      // Dispatch update
+      dispatch(updateUser({ name, email, password }));
     }
   };
 
@@ -82,13 +85,19 @@ const ProfilePage = ({ history }) => {
             <Typography variant="h4" component="h2">
               User profile
             </Typography>
-            {/* ERROR MESSAGE */}
+            {/* SUCCESS MESSAGE */}
+            {success && (
+              <Alert severity="success" style={{ marginTop: "30px" }}>
+                Profile updated successfully
+              </Alert>
+            )}
+            {/* ERROR MESSAGE FROM ACTION*/}
             {error && (
               <Alert severity="error" style={{ marginTop: "30px" }}>
                 {error}
               </Alert>
             )}
-            {/* ERROR MESSAGE */}
+            {/* ERROR MESSAGE FROM THIS PAGE*/}
             {message.length > 0 &&
               message.map((msg, index) => (
                 <Alert

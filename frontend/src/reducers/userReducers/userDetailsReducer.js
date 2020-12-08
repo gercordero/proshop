@@ -10,10 +10,10 @@ const userDetailsReducer = (state = { user: null }, action) => {
       return { ...state, loading: true };
 
     case USER_DETAILS_SUCCESS:
-      return { ...state, loading: false, user: action.payload };
+      return { loading: false, user: action.payload };
 
     case USER_DETAILS_FAIL:
-      return { ...state, loading: false, error: action.payload };
+      return { loading: false, error: action.payload };
 
     default:
       return state;
