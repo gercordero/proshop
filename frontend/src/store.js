@@ -8,7 +8,7 @@ import {
   singleProductReducer,
 } from "./reducers/productReducers";
 // Cart reducers
-import { cartReducer } from "./reducers/cartReducer";
+import { cartReducer } from "./reducers/cartReducers";
 // User reducers
 import {
   userLoginReducer,
@@ -33,6 +33,11 @@ const cartItemsFromLocalStorage = localStorage.getItem("cartItems")
   ? JSON.parse(localStorage.getItem("cartItems"))
   : [];
 
+// Geting shipping address from local store
+const shippingAddressFromLocalStorage = localStorage.getItem("shippingAddress")
+  ? JSON.parse(localStorage.getItem("shippingAddress"))
+  : [];
+
 // Getting logged in user info from local storage
 const userInfoFromLocalStorage = localStorage.getItem("userInfo")
   ? JSON.parse(localStorage.getItem("userInfo"))
@@ -40,7 +45,10 @@ const userInfoFromLocalStorage = localStorage.getItem("userInfo")
 
 // Initial state
 const initialState = {
-  cart: { cartItems: cartItemsFromLocalStorage },
+  cart: {
+    cartItems: cartItemsFromLocalStorage,
+    shippingAddress: shippingAddressFromLocalStorage,
+  },
   userLogin: { userInfo: userInfoFromLocalStorage },
 };
 
