@@ -2,9 +2,9 @@ import React, { useState } from "react";
 // Redux methods
 import { useDispatch, useSelector } from "react-redux";
 // Redux action
-import { addShippingAddress } from "../../actions/cartActions";
+import { addPaymentMethod } from "../../actions/cartActions";
 // Components
-import { FormContainer, ShippingForm, CheckoutSteps } from "../../Components";
+import { FormContainer, CheckoutSteps, PaymentForm } from "../../Components";
 // Material UI
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
@@ -14,49 +14,45 @@ import { PageSection } from "../styles/PageSection";
 const ShippingPage = ({ history }) => {
   // Redux state
   const dispatch = useDispatch();
-  const { shippingAddress } = useSelector((state) => state.cart);
+  const {
+    shippingAddress,
+    paymentMethod: paymentMethodFromRedux,
+  } = useSelector((state) => state.cart);
+
+  if (!shippingAddress) {
+    history.push("/shipping");
+  }
 
   // Component state
-  const [address, setAddress] = useState(shippingAddress.address || "");
-  const [city, setCity] = useState(shippingAddress.city || "");
-  const [postalCode, setPostalCode] = useState(
-    shippingAddress.postalCode || ""
-  );
-  const [country, setCountry] = useState(shippingAddress.country || "");
+  const [paymentMethod, setPaymentMethod] = useState(paymentMethodFromRedux);
 
   // Submit Handler
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(addShippingAddress({ address, city, postalCode, country }));
-    history.push("/payment");
+    dispatch(addPaymentMethod(paymentMethod));
+    history.push("/placeorder");
   };
 
   // Pass props to ShippingForm
   const formProps = {
-    address,
-    city,
-    postalCode,
-    country,
+    paymentMethod,
+    setPaymentMethod,
     submitHandler,
-    setAddress,
-    setCity,
-    setPostalCode,
-    setCountry,
   };
 
   return (
     <PageSection>
       <Container>
         <FormContainer>
-          <CheckoutSteps style={{ marginBottom: "1rem" }} currentStep={0} />
+          <CheckoutSteps style={{ marginBottom: "1rem" }} currentStep={1} />
           <Typography
             variant="h3"
             component="h1"
-            style={{ marginBottom: "1rem" }}
+            style={{ marginBottom: "2rem" }}
           >
-            Shipping
+            Payment
           </Typography>
-          <ShippingForm {...formProps} />
+          <PaymentForm {...formProps} />
         </FormContainer>
       </Container>
     </PageSection>

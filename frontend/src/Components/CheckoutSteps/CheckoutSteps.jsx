@@ -11,7 +11,7 @@ function getSteps() {
   return [
     { label: "Shipping", route: "/shipping" },
     { label: "Payment", route: "/payment" },
-    { label: "Place Order", route: "/place-order" },
+    { label: "Place Order", route: "/placeorder" },
   ];
 }
 

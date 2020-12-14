@@ -34,7 +34,7 @@ const ShippingForm = ({
         variant="contained"
         color="primary"
         size="large"
-        style={{ width: "100%", fontWeight: "bold", margin: "16px 0" }}
+        style={{ fontWeight: "bold", margin: "16px 0" }}
       >
         Continue
       </Button>

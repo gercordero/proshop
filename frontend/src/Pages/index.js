@@ -5,3 +5,4 @@ export { default as LoginPage } from "./LoginPage/LoginPage";
 export { default as RegisterPage } from "./RegisterPage/RegisterPage";
 export { default as ProfilePage } from "./ProfilePage/ProfilePage";
 export { default as ShippingPage } from "./ShippingPage/ShippingPage";
+export { default as PaymentPage } from "./PaymentPage/PaymentPage";
