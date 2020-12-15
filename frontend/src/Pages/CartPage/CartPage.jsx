@@ -50,7 +50,6 @@ const CartPage = ({ match, location, history }) => {
                   <Grid key={item.product} item md={12}>
                     <CartItem
                       item={item}
-                      dispatch={dispatch}
                       removeFromCartHandler={removeFromCartHandler}
                     />
                   </Grid>

@@ -13,6 +13,7 @@ import {
   ProfilePage,
   ShippingPage,
   PaymentPage,
+  PlaceOrderPage,
 } from "./Pages";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
       <MuiThemeProvider theme={theme}>
         <ThemeProvider theme={theme}>
           <Layout>
+            <Route path="/placeorder" component={PlaceOrderPage} />
             <Route path="/payment" component={PaymentPage} />
             <Route path="/shipping" component={ShippingPage} />
             <Route path="/product/:id" component={ProductPage} />

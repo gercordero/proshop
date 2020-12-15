@@ -1,4 +1,6 @@
 import React from "react";
+// Redux
+import { useDispatch } from "react-redux";
 // Redux Action
 import { addToCart } from "../../../../../actions/cartActions";
 // Material UI
@@ -16,17 +18,21 @@ import Divider from "@material-ui/core/Divider";
  * @param {function} dispatch - Function for updating CartPage state.
  * @param {function} id - The id of the product that is needed for dispatch to work properly is used only when Quantity selector is call from CartPage.
  * @param {object} styles - Styles that comes from CartItem. It's for responsive reasons
+ * @param {boolean} isProductPage - A boolean to determinate if page where Order is been rendered from is Product Page
  * @param {object} rest - the rest of the props if any.
  **/
 const QuantitySelector = ({
   countInStock,
   quantity,
   setQuantity,
-  dispatch,
   id,
   styles,
+  isProductPage,
   ...rest
 }) => {
+  // Redux state
+  const dispatch = useDispatch();
+
   return (
     <>
       <ListItem alignItems="flex-start">
@@ -40,7 +46,7 @@ const QuantitySelector = ({
             id="quantity-select"
             value={quantity}
             onChange={(e) => {
-              dispatch
+              !isProductPage
                 ? dispatch(addToCart(id, e.target.value))
                 : setQuantity(e.target.value);
             }}

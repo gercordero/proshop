@@ -18,11 +18,11 @@ import Divider from "@material-ui/core/Divider";
  * @param {object} item - An object that contains all the datails of a product
  * @param {function} dispatch - A function to update redux cart state
  **/
-const CartItem = ({ item, dispatch, removeFromCartHandler }) => {
+const CartItem = ({ item, removeFromCartHandler, isPlaceOrderPage }) => {
   return (
     <>
       <Grid container spacing={3} style={{ padding: "1rem 0" }}>
-        <GridItem item xs={6} sm={3} md={2}>
+        <GridItem item xs={6} sm={3} md={isPlaceOrderPage ? 1 : 2}>
           {/* PRODUCT IMAGE */}
           <Link component={RouterLink} to={`/product/${item.product}`}>
             <img src={item.image} alt={item.name} style={{ width: "100%" }} />
@@ -47,7 +47,6 @@ const CartItem = ({ item, dispatch, removeFromCartHandler }) => {
           <QuantitySelector
             countInStock={item.countInStock}
             quantity={item.quantity}
-            dispatch={dispatch}
             id={item.product}
             styles={{ marginLeft: "1rem" }}
           />

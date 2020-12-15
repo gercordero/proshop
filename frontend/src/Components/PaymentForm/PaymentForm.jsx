@@ -25,12 +25,12 @@ const PaymentForm = ({ paymentMethod, setPaymentMethod, submitHandler }) => {
           onChange={handleChange}
         >
           <FormControlLabel
-            value="paypal"
+            value="PayPal"
             control={<Radio />}
             label="PayPal or Credit Card"
           />
           <FormControlLabel
-            value="stripe"
+            value="Stripe"
             disabled
             control={<Radio />}
             label="Stripe - coming soon"

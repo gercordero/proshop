@@ -53,6 +53,7 @@ const Product = ({
                 quantity={quantity}
                 setQuantity={setQuantity}
                 addToCartHandler={addToCartHandler}
+                isProductPage={true}
               />
             </List>
           </Paper>
