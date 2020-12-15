@@ -15,6 +15,11 @@ function getSteps() {
   ];
 }
 
+/**
+ * @param {currentStep} number - A number to now until which step we have to render.
+ * @param {style} object - An object to style main component.
+ * @param {className} string - An object to add className to main component.
+ **/
 const CheckoutSteps = ({ currentStep, style, className }) => {
   const steps = getSteps();
 

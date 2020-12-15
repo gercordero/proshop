@@ -10,6 +10,9 @@ import Link from "@material-ui/core/Link";
 // React icons
 import { FaShoppingCart, FaUser } from "react-icons/fa";
 
+/**
+ * @param {className} string - An object to add className to main component.
+ **/
 const NavLinks = ({ className }) => {
   const { userInfo } = useSelector((state) => state.userLogin);
 

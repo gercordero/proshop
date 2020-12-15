@@ -15,8 +15,9 @@ import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 
 /**
- * @param {object} item - An object that contains all the datails of a product
- * @param {function} dispatch - A function to update redux cart state
+ * @param {object} item - An object that contains all the datails of a product.
+ * @param {function} dispatch - A function to update redux cart state.
+ * @param {isPlaceOrderPage} boolean - A boolean to determinate if CartItem is beeing render from PlaceOrderPage.
  **/
 const CartItem = ({ item, removeFromCartHandler, isPlaceOrderPage }) => {
   return (

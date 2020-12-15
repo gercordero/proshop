@@ -4,6 +4,10 @@ import FormControl from "@material-ui/core/FormControl";
 import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
 
+/**
+ * @param {name} string - The name of the User.
+ * @param {setName} function - Function to set the Name state of ProfilePage.
+ **/
 const Name = ({ setName, name }) => {
   // Handle on change event
   const handleChange = (e) => {

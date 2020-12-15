@@ -8,7 +8,11 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 
-const SubTotal = ({ cartItems, checkOutHandler, ...rest }) => {
+/**
+ * @param {cartItems} array - An array of product items.
+ * @param {checkOutHandler} function - Function to execute on button "place order" click.
+ **/
+const SubTotal = ({ cartItems, checkOutHandler }) => {
   // Variables initialization
   let totalQuantity = 0;
   let totalPrice = 0;

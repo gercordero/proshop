@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // React Router
 import { Link as RouterLink } from "react-router-dom";
 // Redux
@@ -13,19 +13,27 @@ import { MenuButton, StyledLink } from "./styles/UserMenu.styles";
 // React icons
 import { FaUser } from "react-icons/fa";
 
+/**
+ * @param {name} string - Name from the loged in user.
+ **/
 const UserMenu = ({ name }) => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  // State
+  const [anchorEl, setAnchorEl] = useState(null);
 
+  // Redux state
+  const dispatch = useDispatch();
+
+  // Handle click
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
+  // Handle close
   const handleClose = () => {
     setAnchorEl(null);
   };
 
-  const dispatch = useDispatch();
-
+  // Handle logout
   const handleLogout = () => {
     handleClose();
     dispatch(logoutUser());
@@ -33,6 +41,7 @@ const UserMenu = ({ name }) => {
 
   return (
     <>
+      {/* MENU BUTTON */}
       <MenuButton
         aria-controls="user-menu"
         aria-haspopup="true"
@@ -41,6 +50,7 @@ const UserMenu = ({ name }) => {
         <FaUser />
         {name}
       </MenuButton>
+      {/* MENU */}
       <Menu
         id="user-menu"
         anchorEl={anchorEl}

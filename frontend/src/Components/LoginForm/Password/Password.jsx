@@ -5,6 +5,10 @@ import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormHelperText from "@material-ui/core/FormHelperText";
 
+/**
+ * @param {setPassword} function - Function to set the password state of LoginPage.
+ * @param {error} string - A string with an error if any.
+ **/
 const Password = ({ setPassword, error }) => {
   return (
     <FormControl

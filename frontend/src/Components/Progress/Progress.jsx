@@ -4,9 +4,16 @@ import { StyledProgress } from "./styles/Progress.styles";
 // Material UI
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-const Progress = ({ style, className, ...rest }) => {
+/**
+ * @param {style} object - An object to style main component.
+ * @param {className} string - An object to add className to main component.
+ **/
+const Progress = ({ style, className }) => {
   return (
-    <StyledProgress style={style} className={className}>
+    <StyledProgress
+      style={{ marginBottom: "0", ...style }}
+      className={className}
+    >
       <CircularProgress />
     </StyledProgress>
   );

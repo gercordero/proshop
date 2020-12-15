@@ -6,8 +6,10 @@ import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 // Component
 import { Rating } from "../../../";
-
-const Description = ({ product, ...rest }) => {
+/**
+ * @param {object} product - An object that contains all the product details.
+ **/
+const Description = ({ product }) => {
   const { name, description, price, rating, numReviews } = product;
   return (
     <>

@@ -12,19 +12,12 @@ import Order from "./Order/Order";
 const widthStyle = { width: "100%" };
 
 /**
- * @param {object} product - An object that contains all the product details
- * @param {integer} quantity - The quantity state from ProductPage
- * @param {function} setQuantity - The set quantity state fuction from ProductPage
- * @param {function} addToCartHandler - A function for adding current Product to the Cart
- * @param {object} rest - the rest of the props if any
+ * @param {object} product - An object that contains all the product details.
+ * @param {integer} quantity - The quantity state from ProductPage.
+ * @param {function} setQuantity - The set quantity state fuction from ProductPage.
+ * @param {function} addToCartHandler - A function for adding current Product to the Cart.
  **/
-const Product = ({
-  product,
-  quantity,
-  setQuantity,
-  addToCartHandler,
-  ...rest
-}) => {
+const Product = ({ product, quantity, setQuantity, addToCartHandler }) => {
   const { image } = product;
   // Order of appearance in screen size 'lg' is 1 | 2 | 3 (from left to Right)
   // When the screen size is 'sm' then the grid appers in the order 1 -> 3 -> 2 (from left to Right)

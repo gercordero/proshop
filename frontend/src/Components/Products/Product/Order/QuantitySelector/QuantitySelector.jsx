@@ -17,9 +17,8 @@ import Divider from "@material-ui/core/Divider";
  * @param {function} setQuantity - The set quantity state fuction from ProductPage.
  * @param {function} dispatch - Function for updating CartPage state.
  * @param {function} id - The id of the product that is needed for dispatch to work properly is used only when Quantity selector is call from CartPage.
- * @param {object} styles - Styles that comes from CartItem. It's for responsive reasons
- * @param {boolean} isProductPage - A boolean to determinate if page where Order is been rendered from is Product Page
- * @param {object} rest - the rest of the props if any.
+ * @param {object} styles - Styles that comes from CartItem. It's for responsive reasons.
+ * @param {boolean} isProductPage - A boolean to determinate if page where Order is beeing rendered from is Product Page.
  **/
 const QuantitySelector = ({
   countInStock,
@@ -28,7 +27,6 @@ const QuantitySelector = ({
   id,
   styles,
   isProductPage,
-  ...rest
 }) => {
   // Redux state
   const dispatch = useDispatch();

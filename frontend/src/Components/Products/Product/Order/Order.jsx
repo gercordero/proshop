@@ -8,21 +8,12 @@ import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 
 /**
- * @param {object} product - An object that contains all the product details
- * @param {integer} quantity - The quantity state from ProductPage
- * @param {function} setQuantity - The set quantity state fuction from ProductPage
- * @param {function} addToCartHandler - A function for adding current Product to the Cart
- * @param {boolean} isProductPage - A boolean to determinate if page where Order is been rendered from is Product Page
- * @param {object} rest - the rest of the props if any
+ * @param {object} product - An object that contains all the product details.
+ * @param {integer} quantity - The quantity state from ProductPage.
+ * @param {function} setQuantity - The set quantity state fuction from ProductPage.
+ * @param {function} addToCartHandler - A function for adding current Product to the Cart.
  **/
-const Order = ({
-  product,
-  quantity,
-  setQuantity,
-  addToCartHandler,
-  isProductPage,
-  ...rest
-}) => {
+const Order = ({ product, quantity, setQuantity, addToCartHandler }) => {
   const { price, countInStock } = product;
   return (
     <>

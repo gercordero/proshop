@@ -5,6 +5,10 @@ import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormHelperText from "@material-ui/core/FormHelperText";
 
+/**
+ * @param {setEmail} function - Function to set the Email state of LoginPage.
+ * @param {error} string - A string with an error if any.
+ **/
 const Email = ({ setEmail, error }) => {
   return (
     <FormControl

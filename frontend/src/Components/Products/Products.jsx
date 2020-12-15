@@ -11,17 +11,16 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import Typography from "@material-ui/core/Typography";
 
 /**
- * @param {integer} _id - the id of the product
- * @param {string} name - the name of the product
- * @param {string} image - the path to the image
- * @param {string} description - the description of the product
- * @param {string} brand - the brand of the product
- * @param {string} category - the category of the product
- * @param {float} price - the price of the product
- * @param {integer} countInStock - the amount of stock of the product
- * @param {float} rating - the rating of the product
- * @param {integer} numReviews - the amount of reviews of the product
- * @param {object} rest - the rest of the props if any
+ * @param {integer} _id - the id of the product.
+ * @param {string} name - the name of the product.
+ * @param {string} image - the path to the image.
+ * @param {string} description - the description of the product.
+ * @param {string} brand - the brand of the product.
+ * @param {string} category - the category of the product.
+ * @param {float} price - the price of the product.
+ * @param {integer} countInStock - the amount of stock of the product.
+ * @param {float} rating - the rating of the product.
+ * @param {integer} numReviews - the amount of reviews of the product.
  **/
 
 const Products = ({
@@ -35,7 +34,6 @@ const Products = ({
   countInStock,
   rating,
   numReviews,
-  ...rest
 }) => {
   return (
     <StyledCard>

@@ -7,6 +7,11 @@ import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormHelperText from "@material-ui/core/FormHelperText";
 
+/**
+ * @param {setName} function - Function to set the Name state of RegisterPage.
+ * @param {fieldError} object - An object with booleans that let you know if current field has an error.
+ * @param {setFieldError} function - Function to set the Field Error state of Register Form.
+ **/
 const Name = ({ setName, fieldError, setFieldError }) => {
   // Error state
   const [error, setError] = useState("");

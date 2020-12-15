@@ -7,6 +7,17 @@ import Country from "./Country/Country";
 // Material UI
 import Button from "@material-ui/core/Button";
 
+/**
+ * @param {submitHandler} function - Function to execute on button "Continue" click.
+ * @param {address} string - The address of the User.
+ * @param {city} string - The city of the User.
+ * @param {postalCode} string - The postal code of the User.
+ * @param {country} string - The country of the User.
+ * @param {setAddress} function - Function to set the Address state of ShippingPage.
+ * @param {setCity} function - Function to set the City state of ShippingPage.
+ * @param {setPostalCode} function - Function to set the PostalCode state of ShippingPage.
+ * @param {setCountry} function - Function to set the Country state of ShippingPage.
+ **/
 const ShippingForm = ({
   submitHandler,
   address,

@@ -8,6 +8,16 @@ import Password from "./Password/Password";
 // Material UI
 import Button from "@material-ui/core/Button";
 
+/**
+ * @param {submitHandler} function - Function to execute on button "Continue" click.
+ * @param {name} string - The name of the User.
+ * @param {email} string - The email of the User.
+ * @param {setName} function - Function to set the Name state of ProfilePage.
+ * @param {setEmail} function - Function to set the Email state of ProfilePage.
+ * @param {setPassword} function - Function to set the Password state of ProfilePage.
+ * @param {setConfirmPassword} function - Function to set the ConfirmPassword state of ProfilePage.
+ * @param {loading} boolean - A boolean to know if an async request is going on.
+ **/
 const UpdateForm = ({
   submitHandler,
   name,
@@ -17,7 +27,6 @@ const UpdateForm = ({
   setPassword,
   setConfirmPassword,
   loading,
-  ...rest
 }) => {
   return (
     <form onSubmit={submitHandler}>
@@ -37,11 +46,7 @@ const UpdateForm = ({
         size="large"
         style={{ width: "100%", fontWeight: "bold", margin: "16px 0" }}
       >
-        {loading ? (
-          <Progress style={{ marginBottom: "0" }} />
-        ) : (
-          "Update Profile"
-        )}
+        {loading ? <Progress /> : "Update Profile"}
       </Button>
     </form>
   );

@@ -6,6 +6,11 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import Button from "@material-ui/core/Button";
 
+/**
+ * @param {paymentMethod} string - An string that contains the name of the selected payment method.
+ * @param {setPaymentMethod} function - Function to set the Payment Method state of PaymentPage.
+ * @param {submitHandler} function - Function to execute on button "Continue" click.
+ **/
 const PaymentForm = ({ paymentMethod, setPaymentMethod, submitHandler }) => {
   const handleChange = (event) => {
     setPaymentMethod(event.target.value);

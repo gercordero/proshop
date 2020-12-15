@@ -8,6 +8,13 @@ import Password from "./Password/Password";
 // Material UI
 import Button from "@material-ui/core/Button";
 
+/**
+ * @param {submitHandler} function - Function to execute on button "Sign Up" click.
+ * @param {setName} function - Function to set the Name state of RegisterPage.
+ * @param {setEmail} function - Function to set the Email state of RegisterPage.
+ * @param {setPassword} function - Function to set the Password state of RegisterPage.
+ * @param {loading} boolean - A boolean to know if an async request is going on.
+ **/
 const RegisterForm = ({
   submitHandler,
   setName,
@@ -15,7 +22,6 @@ const RegisterForm = ({
   setPassword,
   setConfirmPassword,
   loading,
-  ...rest
 }) => {
   // We assumed that all fields start with errors so that the submit button begins disabled.
   const errors = {
@@ -60,7 +66,7 @@ const RegisterForm = ({
             : false
         }
       >
-        {loading ? <Progress style={{ marginBottom: "0" }} /> : "Sign up"}
+        {loading ? <Progress /> : "Sign up"}
       </Button>
     </form>
   );

@@ -4,6 +4,10 @@ import FormControl from "@material-ui/core/FormControl";
 import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
 
+/**
+ * @param {postalCode} string - The postal code of the User.
+ * @param {setPostalCode} function - Function to set the PostalCode state of ShippingPage.
+ **/
 const PostalCode = ({ postalCode, setPostalCode }) => {
   return (
     <FormControl
