@@ -1,7 +1,7 @@
 // Express
 import { Router } from "express";
 // Import product controllers
-import { addOrderItems } from "../../controllers/orderController.js";
+import { addOrder, getOrder } from "../../controllers/orderController.js";
 // Protect private route
 import { protect } from "../../middleware/authMiddleware.js";
 
@@ -16,6 +16,11 @@ router.get("/test", (req, res) => res.json({ msg: "Orders Works" }));
 // @route   POST /api/orders
 // @desc    Create new order
 // @access  Private
-router.route("/").post(protect, addOrderItems);
+router.route("/").post(protect, addOrder);
+
+// @route   GET /api/orders
+// @desc    Get order
+// @access  Private
+router.route("/:id").get(protect, getOrder);
 
 export default router;
