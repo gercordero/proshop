@@ -1,3 +1,5 @@
+import axios from "axios";
+// Constants
 import {
   ORDER_CREATE_REQUEST,
   ORDER_CREATE_SUCCESS,
@@ -7,7 +9,7 @@ import {
 // API URL
 const url = `${process.env.REACT_APP_BACKEND_URL}/api/orders`;
 
-const createOrder = (order) => async (dispatch) => {
+const createOrder = (order) => async (dispatch, getState) => {
   try {
     // Dispatch post create order request
     dispatch({ type: ORDER_CREATE_REQUEST });

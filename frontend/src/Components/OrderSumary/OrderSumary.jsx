@@ -1,5 +1,6 @@
 import React from "react";
 // Components
+import { Progress } from "../";
 import { Items, Shipping, Taxes, Total } from "./OrderSumaryComponents";
 // Material UI
 import Paper from "@material-ui/core/Paper";
@@ -12,14 +13,14 @@ import Button from "@material-ui/core/Button";
  * @param {cartItems} array - An array of product items.
  * @param {checkOutHandler} function - Function to execute on button "place order" click.
  **/
-const OrderSummary = ({ cartItems, checkOutHandler }) => {
+const OrderSummary = ({ cartItems, checkOutHandler, loading }) => {
   // Variables initialization
   let totalQuantity = 0;
-  let totalPrice = 0;
+  let itemsPrice = 0;
   // Iterate over cartItems to calculate totals
   cartItems.forEach((element) => {
     totalQuantity += element.quantity;
-    totalPrice += element.price * element.quantity;
+    itemsPrice += element.price * element.quantity;
   });
 
   // Add decimals fuction
@@ -33,13 +34,16 @@ const OrderSummary = ({ cartItems, checkOutHandler }) => {
   };
 
   // Total price round up
-  totalPrice = roundUp(totalPrice);
+  itemsPrice = roundUp(itemsPrice);
 
   // Calculate shipping
-  let shippingPrice = totalPrice > 50 ? 5 : 10;
+  let shippingPrice = itemsPrice > 50 ? 5 : 10;
 
   // Calculate taxes
-  let taxPrice = roundUp(Number(0.25 * totalPrice));
+  let taxPrice = roundUp(Number(0.25 * itemsPrice));
+
+  // Calculate total price
+  const totalPrice = roundUp(itemsPrice + shippingPrice + taxPrice);
 
   return (
     <Paper variant="outlined" square>
@@ -47,20 +51,17 @@ const OrderSummary = ({ cartItems, checkOutHandler }) => {
         {/* ITEMS */}
         <Items
           totalQuantity={totalQuantity}
-          totalPrice={totalPrice}
-          addDecimals={addDecimals}
+          itemsPrice={addDecimals(itemsPrice)}
         />
         <Divider />
         {/* Shipping */}
-        <Shipping shippingPrice={shippingPrice} addDecimals={addDecimals} />
+        <Shipping shippingPrice={addDecimals(shippingPrice)} />
         <Divider />
         {/* Taxes */}
-        <Taxes taxPrice={taxPrice} addDecimals={addDecimals} />
+        <Taxes taxPrice={addDecimals(taxPrice)} />
         <Divider />
         {/* Total */}
-        <Total
-          total={addDecimals(roundUp(totalPrice + shippingPrice + taxPrice))}
-        />
+        <Total total={addDecimals(totalPrice)} />
         <Divider />
         <ListItem>
           <Button
@@ -68,9 +69,12 @@ const OrderSummary = ({ cartItems, checkOutHandler }) => {
             color="primary"
             size="large"
             style={{ width: "100%", fontWeight: "bold" }}
-            onClick={checkOutHandler}
+            disabled={loading}
+            onClick={() =>
+              checkOutHandler(itemsPrice, shippingPrice, taxPrice, totalPrice)
+            }
           >
-            place order
+            {loading ? <Progress /> : "Place Order"}
           </Button>
         </ListItem>
       </List>

@@ -5,7 +5,7 @@ import ListItem from "@material-ui/core/ListItem";
 // Styled Components
 import { StyledListItemText } from "../styles/OrderSumary.styles";
 
-const Taxes = ({ taxPrice, addDecimals }) => {
+const Taxes = ({ taxPrice }) => {
   return (
     <ListItem>
       <StyledListItemText
@@ -15,9 +15,7 @@ const Taxes = ({ taxPrice, addDecimals }) => {
           </Typography>
         }
       />
-      <StyledListItemText
-        primary={<strong>$ {addDecimals(taxPrice)}</strong>}
-      />
+      <StyledListItemText primary={<strong>$ {taxPrice}</strong>} />
     </ListItem>
   );
 };
