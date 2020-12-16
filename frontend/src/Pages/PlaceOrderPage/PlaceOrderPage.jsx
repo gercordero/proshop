@@ -31,9 +31,9 @@ const PlaceOrderPage = ({ history }) => {
 
   useEffect(() => {
     // * REDIRECTION *
-    // if (success) {
-    //   history.push(`/order/${order._id}`);
-    // }
+    if (success) {
+      history.push(`/order/${order._id}`);
+    }
 
     if (cartItems.length === 0) {
       history.push("/");
