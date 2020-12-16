@@ -24,10 +24,12 @@ app.use(cors());
 //Routes
 import products from "./routes/api/products.js";
 import users from "./routes/api/users.js";
+import orders from "./routes/api/orders.js";
 
 //Use Routes
 app.use("/api/products", products);
 app.use("/api/users", users);
+app.use("/api/orders", orders);
 
 // Errors Handlers
 app.use(notFound);
