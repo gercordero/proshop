@@ -35,6 +35,11 @@ app.use("/api/orders", orders);
 app.use(notFound);
 app.use(errorsHandler);
 
+// Config Routes
+app.get("/api/config/paypal", (req, res) => {
+  res.send(process.env.PAYPAL_CLIENT_ID);
+});
+
 //Start server
 app.listen(app.get("port"), () => {
   console.log("Server running on port", app.get("port"));

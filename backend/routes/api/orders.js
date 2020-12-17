@@ -27,7 +27,7 @@ router.route("/").post(protect, addOrder);
 // @access  Private
 router.route("/:id").get(protect, getOrder);
 
-// @route   GET /api/orders/:id/pay
+// @route   PUT /api/orders/:id/pay
 // @desc    Update order to paid
 // @access  Private
 router.route("/:id/").put(protect, updateOrderToPaid);
