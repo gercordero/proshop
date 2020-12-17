@@ -30,6 +30,6 @@ router.route("/:id").get(protect, getOrder);
 // @route   GET /api/orders/:id/pay
 // @desc    Update order to paid
 // @access  Private
-router.route("/:id/").get(protect, updateOrderToPaid);
+router.route("/:id/").put(protect, updateOrderToPaid);
 
 export default router;
