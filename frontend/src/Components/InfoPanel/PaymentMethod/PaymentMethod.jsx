@@ -5,6 +5,8 @@ import Grid from "@material-ui/core/Grid";
 import Alert from "@material-ui/lab/Alert";
 
 const PaymentMethod = ({ paymentMethod, isOrderPage, isPaid, paidAt }) => {
+  const paidDate = new Date(paidAt);
+
   return (
     <Grid item md={12}>
       <Typography
@@ -20,7 +22,7 @@ const PaymentMethod = ({ paymentMethod, isOrderPage, isPaid, paidAt }) => {
       </Typography>
       {isOrderPage ? (
         isPaid ? (
-          <Alert severity="info">Paid on {paidAt}</Alert>
+          <Alert severity="info">Paid on {paidDate.toDateString()}</Alert>
         ) : (
           <Alert severity="error">Not Paid</Alert>
         )

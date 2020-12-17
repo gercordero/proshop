@@ -1,7 +1,7 @@
 import React from "react";
 // Components
 import { Progress } from "../";
-import { Items, Shipping, Taxes, Total } from "./OrderSumaryComponents";
+import { Items, Shipping, Taxes, Total, PayPal } from "./OrderSumaryComponents";
 // Material UI
 import Paper from "@material-ui/core/Paper";
 import List from "@material-ui/core/List";
@@ -20,6 +20,11 @@ const OrderSummary = ({
   checkOutHandler,
   loading,
   isVariantPage,
+  isPaid,
+  sdkReady,
+  loadingPay,
+  orderTotalPrice,
+  handleSuccesPayment,
 }) => {
   // Variables initialization
   let totalQuantity = 0;
@@ -52,6 +57,13 @@ const OrderSummary = ({
   // Calculate total price
   const totalPrice = roundUp(itemsPrice + shippingPrice + taxPrice);
 
+  const PayPalProps = {
+    sdkReady,
+    loadingPay,
+    orderTotalPrice,
+    handleSuccesPayment,
+  };
+
   return (
     <Paper variant="outlined" square>
       <List style={{ width: "100%" }}>
@@ -61,14 +73,22 @@ const OrderSummary = ({
           itemsPrice={addDecimals(itemsPrice)}
         />
         <Divider />
+
         {/* Shipping */}
         <Shipping shippingPrice={addDecimals(shippingPrice)} />
         <Divider />
+
         {/* Taxes */}
         <Taxes taxPrice={addDecimals(taxPrice)} />
         <Divider />
+
         {/* Total */}
         <Total total={addDecimals(totalPrice)} />
+
+        {/* Paypal Button */}
+        {isVariantPage ? !isPaid ? <PayPal {...PayPalProps} /> : "" : ""}
+
+        {/* Place Order Button */}
         {!isVariantPage && (
           <>
             <Divider />

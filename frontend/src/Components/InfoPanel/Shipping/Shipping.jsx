@@ -12,6 +12,8 @@ const Shipping = ({
   isDelivered,
   deliveredAt,
 }) => {
+  const deliveredDay = new Date(deliveredAt);
+
   return (
     <Grid item md={12}>
       <Typography
@@ -39,9 +41,14 @@ const Shipping = ({
       </Typography>
       {isOrderPage ? (
         isDelivered ? (
-          <Alert severity="info">Delivered on {deliveredAt}</Alert>
+          <Alert severity="info">
+            Delivered on {deliveredDay.toDateString()}
+          </Alert>
         ) : (
-          <Alert severity="error">Not Delivered</Alert>
+          <Alert severity="error">
+            Not delivered yet. We will let you know when your order has been
+            delivered.
+          </Alert>
         )
       ) : (
         ""

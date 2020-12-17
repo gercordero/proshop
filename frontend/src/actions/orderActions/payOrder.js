@@ -29,7 +29,11 @@ const payOrder = (orderId, paymentResult) => async (dispatch, getState) => {
     };
 
     // Send a put request to update order details
-    const { data: order } = await axios.put(`${url}/${orderId}/pay`, config);
+    const { data: order } = await axios.put(
+      url + "/" + orderId + "/pay",
+      paymentResult,
+      config
+    );
 
     // Dispatch if pay success
     dispatch({ type: ORDER_PAY_SUCCESS, payload: order });
