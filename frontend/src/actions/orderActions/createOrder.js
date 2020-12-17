@@ -19,7 +19,7 @@ const createOrder = (order) => async (dispatch, getState) => {
       userLogin: { userInfo },
     } = getState();
 
-    // Set config var for post request
+    // Set config var for private post request
     const config = {
       headers: {
         "Content-Type": "application/json",
@@ -27,11 +27,11 @@ const createOrder = (order) => async (dispatch, getState) => {
       },
     };
 
-    // Send a get request to get user profile details
-    const { data: user } = await axios.post(url, order, config);
+    // Send a post request to create a new order
+    const { data: orderDetails } = await axios.post(url, order, config);
 
     // Dispatch if post success
-    dispatch({ type: ORDER_CREATE_SUCCESS, payload: user });
+    dispatch({ type: ORDER_CREATE_SUCCESS, payload: orderDetails });
   } catch (error) {
     dispatch({
       type: ORDER_CREATE_FAIL,

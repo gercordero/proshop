@@ -2,8 +2,9 @@ import React from "react";
 // Material UI
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import Alert from "@material-ui/lab/Alert";
 
-const PaymentMethod = ({ paymentMethod }) => {
+const PaymentMethod = ({ paymentMethod, isOrderPage, isPaid, paidAt }) => {
   return (
     <Grid item md={12}>
       <Typography
@@ -17,6 +18,15 @@ const PaymentMethod = ({ paymentMethod }) => {
         <strong>Method: </strong>
         {paymentMethod}
       </Typography>
+      {isOrderPage ? (
+        isPaid ? (
+          <Alert severity="info">Paid on {paidAt}</Alert>
+        ) : (
+          <Alert severity="error">Not Paid</Alert>
+        )
+      ) : (
+        ""
+      )}
     </Grid>
   );
 };

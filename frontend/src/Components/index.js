@@ -14,4 +14,5 @@ export { default as UpdateForm } from "./UpdateForm/UpdateForm";
 export { default as ShippingForm } from "./ShippingForm/ShippingForm";
 export { default as CheckoutSteps } from "./CheckoutSteps/CheckoutSteps";
 export { default as PaymentForm } from "./PaymentForm/PaymentForm";
+export { default as InfoPanel } from "./InfoPanel/InfoPanel";
 export { default as OrderSumary } from "./OrderSumary/OrderSumary";

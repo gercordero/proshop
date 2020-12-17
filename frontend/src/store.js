@@ -17,7 +17,7 @@ import {
   userUpdateProfileReducer,
 } from "./reducers/userReducers";
 // Order reducers
-import { orderCreateReducer } from "./reducers/orderReducers";
+import { orderCreateReducer, orderGetReducer } from "./reducers/orderReducers";
 
 // All reducers
 const reducer = combineReducers({
@@ -29,6 +29,7 @@ const reducer = combineReducers({
   userDetails: userDetailsReducer,
   userUpdateProfile: userUpdateProfileReducer,
   orderCreate: orderCreateReducer,
+  orderGet: orderGetReducer,
 });
 
 // Geting cart items from local store

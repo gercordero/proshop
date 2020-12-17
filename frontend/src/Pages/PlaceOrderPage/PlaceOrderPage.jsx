@@ -4,11 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 // Redux action
 import { removeFromCart } from "../../actions/cartActions";
 import { createOrder } from "../../actions/orderActions";
-// Components
-import InfoPanel from "./InfoPanel/InfoPanel";
 import {
   FormContainer,
   CheckoutSteps,
+  InfoPanel,
   CartItem,
   OrderSumary,
 } from "../../Components";
@@ -90,7 +89,6 @@ const PlaceOrderPage = ({ history }) => {
                   <CartItem
                     item={item}
                     removeFromCartHandler={removeFromCartHandler}
-                    isPlaceOrderPage
                   />
                 </Grid>
               ))}

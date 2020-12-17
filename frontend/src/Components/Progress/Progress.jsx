@@ -14,7 +14,7 @@ const Progress = ({ style, className }) => {
       style={{ marginBottom: "0", ...style }}
       className={className}
     >
-      <CircularProgress />
+      <CircularProgress style={{ width: "30px", height: "30px" }} />
     </StyledProgress>
   );
 };

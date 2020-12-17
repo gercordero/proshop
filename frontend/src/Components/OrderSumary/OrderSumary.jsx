@@ -12,8 +12,15 @@ import Button from "@material-ui/core/Button";
 /**
  * @param {cartItems} array - An array of product items.
  * @param {checkOutHandler} function - Function to execute on button "place order" click.
+ * @param {loading} boolean - A boolean to know if an async request is going on.
+ * @param {isVariantPage} boolean - A boolean to determinate if CartItem is beeing render from PlaceOrderPage.
  **/
-const OrderSummary = ({ cartItems, checkOutHandler, loading }) => {
+const OrderSummary = ({
+  cartItems,
+  checkOutHandler,
+  loading,
+  isVariantPage,
+}) => {
   // Variables initialization
   let totalQuantity = 0;
   let itemsPrice = 0;
@@ -62,21 +69,30 @@ const OrderSummary = ({ cartItems, checkOutHandler, loading }) => {
         <Divider />
         {/* Total */}
         <Total total={addDecimals(totalPrice)} />
-        <Divider />
-        <ListItem>
-          <Button
-            variant="contained"
-            color="primary"
-            size="large"
-            style={{ width: "100%", fontWeight: "bold" }}
-            disabled={loading}
-            onClick={() =>
-              checkOutHandler(itemsPrice, shippingPrice, taxPrice, totalPrice)
-            }
-          >
-            {loading ? <Progress /> : "Place Order"}
-          </Button>
-        </ListItem>
+        {!isVariantPage && (
+          <>
+            <Divider />
+            <ListItem>
+              <Button
+                variant="contained"
+                color="primary"
+                size="large"
+                style={{ width: "100%", fontWeight: "bold" }}
+                disabled={loading}
+                onClick={() =>
+                  checkOutHandler(
+                    itemsPrice,
+                    shippingPrice,
+                    taxPrice,
+                    totalPrice
+                  )
+                }
+              >
+                {loading ? <Progress /> : "Place Order"}
+              </Button>
+            </ListItem>
+          </>
+        )}
       </List>
     </Paper>
   );
