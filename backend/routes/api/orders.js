@@ -1,7 +1,11 @@
 // Express
 import { Router } from "express";
 // Import product controllers
-import { addOrder, getOrder } from "../../controllers/orderController.js";
+import {
+  addOrder,
+  getOrder,
+  updateOrderToPaid,
+} from "../../controllers/orderController.js";
 // Protect private route
 import { protect } from "../../middleware/authMiddleware.js";
 
@@ -22,5 +26,10 @@ router.route("/").post(protect, addOrder);
 // @desc    Get order
 // @access  Private
 router.route("/:id").get(protect, getOrder);
+
+// @route   GET /api/orders/:id/pay
+// @desc    Update order to paid
+// @access  Private
+router.route("/:id/").get(protect, updateOrderToPaid);
 
 export default router;
