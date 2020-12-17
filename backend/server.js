@@ -21,6 +21,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
 
+// Config Routes
+app.get("/api/config/paypal", (req, res) => {
+  res.send(process.env.PAYPAL_CLIENT_ID);
+});
+
 //Routes
 import products from "./routes/api/products.js";
 import users from "./routes/api/users.js";
@@ -34,11 +39,6 @@ app.use("/api/orders", orders);
 // Errors Handlers
 app.use(notFound);
 app.use(errorsHandler);
-
-// Config Routes
-app.get("/api/config/paypal", (req, res) => {
-  res.send(process.env.PAYPAL_CLIENT_ID);
-});
 
 //Start server
 app.listen(app.get("port"), () => {
