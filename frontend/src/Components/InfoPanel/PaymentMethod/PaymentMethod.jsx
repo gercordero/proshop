@@ -8,11 +8,11 @@ const PaymentMethod = ({ paymentMethod, isOrderPage, isPaid, paidAt }) => {
   const paidDate = new Date(paidAt);
 
   return (
-    <Grid item md={12}>
+    <Grid item xs={12} sm={12} md={12}>
       <Typography
         variant="h4"
         component="h2"
-        style={{ marginBottom: "1.5rem" }}
+        style={{ marginBottom: "1.5rem", marginTop: "2rem" }}
       >
         Payment method
       </Typography>

@@ -11,6 +11,7 @@ export { default as FormContainer } from "./FormContainer/FormContainer";
 export { default as LoginForm } from "./LoginForm/LoginForm";
 export { default as RegisterForm } from "./RegisterForm/RegisterForm";
 export { default as UpdateForm } from "./UpdateForm/UpdateForm";
+export { default as MyOrdersPanel } from "./MyOrdersPanel/MyOrdersPanel";
 export { default as ShippingForm } from "./ShippingForm/ShippingForm";
 export { default as CheckoutSteps } from "./CheckoutSteps/CheckoutSteps";
 export { default as PaymentForm } from "./PaymentForm/PaymentForm";

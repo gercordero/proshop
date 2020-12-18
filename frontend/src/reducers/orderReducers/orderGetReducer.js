@@ -4,19 +4,16 @@ import {
   ORDER_GET_FAIL,
 } from "../../constants/orderConstants";
 
-const orderGetReducer = (
-  state = { loading: true, orderItems: [], shippingAddress: {} },
-  action
-) => {
+const orderGetReducer = (state = { loading: true }, action) => {
   switch (action.type) {
     case ORDER_GET_REQUEST:
-      return { ...state, loading: true };
+      return { loading: true };
 
     case ORDER_GET_SUCCESS:
-      return { ...state, loading: false, order: action.payload };
+      return { loading: false, order: action.payload };
 
     case ORDER_GET_FAIL:
-      return { ...state, loading: false, error: action.payload };
+      return { loading: false, error: action.payload };
 
     default:
       return state;

@@ -15,12 +15,12 @@ const payOrder = (orderId, paymentResult) => async (dispatch, getState) => {
     // Dispatch pay order request
     dispatch({ type: ORDER_PAY_REQUEST });
 
-    // Pay user info from Login redux state
+    // Get user info from Login redux state
     const {
       userLogin: { userInfo },
     } = getState();
 
-    // Set config var for private pay request
+    // Set config var for private put request
     const config = {
       headers: {
         "Content-Type": "application/json",

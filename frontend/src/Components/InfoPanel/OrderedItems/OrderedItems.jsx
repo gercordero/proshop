@@ -5,8 +5,12 @@ import Grid from "@material-ui/core/Grid";
 
 const OrderedItems = () => {
   return (
-    <Grid item md={12}>
-      <Typography variant="h4" component="h2" style={{ marginBottom: "1rem" }}>
+    <Grid item xs={12} sm={12} md={12}>
+      <Typography
+        variant="h4"
+        component="h2"
+        style={{ marginBottom: "1rem", marginTop: "2rem" }}
+      >
         Ordered items
       </Typography>
     </Grid>
