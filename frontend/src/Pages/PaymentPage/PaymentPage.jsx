@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // Redux methods
 import { useDispatch, useSelector } from "react-redux";
 // Redux action
@@ -15,16 +15,30 @@ const ShippingPage = ({ history }) => {
   // Redux state
   const dispatch = useDispatch();
   const {
+    cartItems,
     shippingAddress,
     paymentMethod: paymentMethodFromRedux,
   } = useSelector((state) => state.cart);
-
-  if (!shippingAddress) {
-    history.push("/shipping");
-  }
+  const { userInfo } = useSelector((state) => state.userLogin);
 
   // Component state
   const [paymentMethod, setPaymentMethod] = useState(paymentMethodFromRedux);
+
+  useEffect(() => {
+    // * REDIRECTION *
+    if (!userInfo || !userInfo.name) {
+      history.push("/login");
+    }
+
+    if (cartItems.length === 0) {
+      history.push("/");
+    }
+
+    if (!shippingAddress) {
+      history.push("/shipping");
+    }
+    // * END OF REDIRECTION *
+  }, [history, userInfo, cartItems, shippingAddress]);
 
   // Submit Handler
   const submitHandler = (e) => {

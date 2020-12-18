@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // Redux methods
 import { useDispatch, useSelector } from "react-redux";
 // Redux action
@@ -14,7 +14,8 @@ import { PageSection } from "../styles/PageSection";
 const ShippingPage = ({ history }) => {
   // Redux state
   const dispatch = useDispatch();
-  const { shippingAddress } = useSelector((state) => state.cart);
+  const { shippingAddress, cartItems } = useSelector((state) => state.cart);
+  const { userInfo } = useSelector((state) => state.userLogin);
 
   // Component state
   const [address, setAddress] = useState(shippingAddress.address || "");
@@ -23,6 +24,19 @@ const ShippingPage = ({ history }) => {
     shippingAddress.postalCode || ""
   );
   const [country, setCountry] = useState(shippingAddress.country || "");
+
+  useEffect(() => {
+    // * REDIRECTION *
+    if (cartItems.length === 0) {
+      history.push("/");
+    }
+
+    if (!userInfo || !userInfo.name) {
+      history.push("/login");
+    }
+
+    // * END OF REDIRECTION *
+  }, [history, cartItems, userInfo]);
 
   // Submit Handler
   const submitHandler = (e) => {

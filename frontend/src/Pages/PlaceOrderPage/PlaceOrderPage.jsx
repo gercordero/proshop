@@ -26,12 +26,17 @@ const PlaceOrderPage = ({ history }) => {
   const { loading, error, success, order } = useSelector(
     (state) => state.orderCreate
   );
+  const { userInfo } = useSelector((state) => state.userLogin);
   const dispatch = useDispatch();
 
   useEffect(() => {
     // * REDIRECTION *
     if (success) {
       history.push(`/order/${order._id}`);
+    }
+
+    if (!userInfo || !userInfo.name) {
+      history.push("/login");
     }
 
     if (cartItems.length === 0) {
@@ -46,7 +51,15 @@ const PlaceOrderPage = ({ history }) => {
       history.push("/payment");
     }
     // * END OF REDIRECTION *
-  }, [success, order, cartItems, shippingAddress, paymentMethod, history]);
+  }, [
+    success,
+    order,
+    cartItems,
+    userInfo,
+    shippingAddress,
+    paymentMethod,
+    history,
+  ]);
 
   const removeFromCartHandler = (id) => {
     dispatch(removeFromCart(id));
