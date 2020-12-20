@@ -9,7 +9,7 @@ import {
   getUsers,
 } from "../../controllers/userContorller.js";
 // Protect private route
-import { protect } from "../../middleware/authMiddleware.js";
+import { protect, isAdmin } from "../../middleware/authMiddleware.js";
 
 // Router instance
 const router = Router();
@@ -39,7 +39,7 @@ router.route("/profile").put(protect, updateUserProfile);
 // @route   GET api/users
 // @desc    Get all users.
 // @access  Private/Admin
-router.route("/").get(protect, getUsers);
+router.route("/").get(protect, isAdmin, getUsers);
 
 // @route   POST api/users
 // @desc    Register a new user

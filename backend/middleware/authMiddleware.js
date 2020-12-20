@@ -29,3 +29,13 @@ export const protect = asyncHandler(async (req, res, next) => {
     throw new Error("Not authorize, no token");
   }
 });
+
+// isAdmin middleware is ment be call after protect middleware to determinate if accessin user is an Admin
+export const isAdmin = (req, res, next) => {
+  if (req.user && req.user.isAdmin) {
+    next();
+  } else {
+    res.status(401);
+    throw new Error("Not authorized as an Admin");
+  }
+};
