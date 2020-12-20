@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 // Redux methods
 import { useDispatch, useSelector } from "react-redux";
 // Redux action
-import { getUsersList } from "../../actions/userActions";
+import { getUsersList, deleteUser } from "../../actions/userActions";
 // Components
 import { Progress, UsersPanel } from "../../Components";
 // Material UI
@@ -18,6 +18,9 @@ const UsersListPage = ({ history }) => {
   // Redux state
   const { loading, error, users } = useSelector((state) => state.userList);
   const { userInfo } = useSelector((state) => state.userLogin);
+  const { success: successDelete, loading: loadingDelete } = useSelector(
+    (state) => state.userDelete
+  );
 
   useEffect(() => {
     // If user is admin will see the user list else will be redirecte to login page
@@ -26,14 +29,16 @@ const UsersListPage = ({ history }) => {
     } else {
       history.push("/login");
     }
-  }, [history, userInfo, dispatch]);
+  }, [history, userInfo, dispatch, successDelete]);
 
   const editUserHandler = (userID) => {
     console.log(userID);
   };
 
   const deleteUserHandler = (userID) => {
-    console.log(userID);
+    if (window.confirm("Are you sure?")) {
+      dispatch(deleteUser(userID));
+    }
   };
 
   const usersPanelProps = {
@@ -48,7 +53,7 @@ const UsersListPage = ({ history }) => {
         <Typography variant="h4" component="h2">
           Users
         </Typography>
-        {loading ? (
+        {loading || loadingDelete ? (
           <Progress />
         ) : error ? (
           <Alert severity="error">{error}</Alert>

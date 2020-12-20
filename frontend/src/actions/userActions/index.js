@@ -4,3 +4,4 @@ export { default as logoutUser } from "./logoutUser";
 export { default as getUserDetails } from "./getUserDetails";
 export { default as updateUser } from "./updateUser";
 export { default as getUsersList } from "./getUsersList";
+export { default as deleteUser } from "./deleteUser";
