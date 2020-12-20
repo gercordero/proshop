@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react";
-// Router
-import { Link as RouterLink } from "react-router-dom";
+import React, { useEffect } from "react";
 // Redux methods
 import { useDispatch, useSelector } from "react-redux";
 // Redux action
@@ -10,20 +8,25 @@ import { Progress, UsersPanel } from "../../Components";
 // Material UI
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import Link from "@material-ui/core/Link";
 import Alert from "@material-ui/lab/Alert";
 // Styled components
 import { PageSection } from "../styles/PageSection";
 
-const UsersListPage = () => {
+const UsersListPage = ({ history }) => {
   const dispatch = useDispatch();
 
   // Redux state
   const { loading, error, users } = useSelector((state) => state.userList);
+  const { userInfo } = useSelector((state) => state.userLogin);
 
   useEffect(() => {
-    dispatch(getUsersList());
-  }, [dispatch]);
+    // If user is admin will see the user list else will be redirecte to login page
+    if (userInfo && userInfo.isAdmin) {
+      dispatch(getUsersList());
+    } else {
+      history.push("/login");
+    }
+  }, [history, userInfo, dispatch]);
 
   const editUserHandler = (userID) => {
     console.log(userID);
