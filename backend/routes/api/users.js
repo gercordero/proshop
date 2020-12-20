@@ -6,6 +6,7 @@ import {
   registerUser,
   getUserProfile,
   updateUserProfile,
+  getUsers,
 } from "../../controllers/userContorller.js";
 // Protect private route
 import { protect } from "../../middleware/authMiddleware.js";
@@ -34,6 +35,11 @@ router.route("/profile").get(protect, getUserProfile);
 // @desc    Update User Profile
 // @access  Private
 router.route("/profile").put(protect, updateUserProfile);
+
+// @route   GET api/users
+// @desc    Get all users.
+// @access  Private/Admin
+router.route("/").get(protect, getUsers);
 
 // @route   POST api/users
 // @desc    Register a new user
