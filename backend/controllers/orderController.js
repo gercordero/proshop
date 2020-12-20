@@ -86,5 +86,24 @@ export const updateOrderToPaid = asyncHandler(async (req, res) => {
 export const getMyOrders = asyncHandler(async (req, res) => {
   const orders = await Order.find({ user: req.user._id });
 
-  res.status(200).json(orders);
+  if (orders) {
+    res.status(200).json(orders);
+  } else {
+    res.status(404);
+    throw new Error("Orders not found");
+  }
+});
+
+// @route   GET /api/orders
+// @desc    Get all orders.
+// @access  Private/Admin
+export const getAllOrders = asyncHandler(async (req, res) => {
+  const orders = await Order.find({}).populate("user", "id name");
+
+  if (orders) {
+    res.status(200).json(orders);
+  } else {
+    res.status(404);
+    throw new Error("Orders not found");
+  }
 });
