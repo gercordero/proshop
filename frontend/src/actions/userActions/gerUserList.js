@@ -1,17 +1,17 @@
 import axios from "axios";
 import {
-  USER_DETAILS_REQUEST,
-  USER_DETAILS_SUCCESS,
-  USER_DETAILS_FAIL,
+  USER_LIST_REQUEST,
+  USER_LIST_SUCCESS,
+  USER_LIST_FAIL,
 } from "../../constants/userConstants";
 
 // API URL
 const url = `${process.env.REACT_APP_BACKEND_URL}/api/users`;
 
-const getUserDetails = (id) => async (dispatch, getState) => {
+const getUserList = () => async (dispatch, getState) => {
   try {
-    // Dispatch get user details request
-    dispatch({ type: USER_DETAILS_REQUEST });
+    // Dispatch get users list request
+    dispatch({ type: USER_LIST_REQUEST });
 
     // Get user info from Login redux state
     const {
@@ -25,14 +25,14 @@ const getUserDetails = (id) => async (dispatch, getState) => {
       },
     };
 
-    // Send a get request to get user profile details
-    const { data: user } = await axios(url + "/" + id, config);
+    // Send a get request to get users list
+    const { data: users } = await axios(url, config);
 
-    // Dispatch if succes get user profile
-    dispatch({ type: USER_DETAILS_SUCCESS, payload: user });
+    // Dispatch if succes get all users
+    dispatch({ type: USER_LIST_SUCCESS, payload: users });
   } catch (error) {
     dispatch({
-      type: USER_DETAILS_FAIL,
+      type: USER_LIST_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
@@ -41,4 +41,4 @@ const getUserDetails = (id) => async (dispatch, getState) => {
   }
 };
 
-export default getUserDetails;
+export default getUserList;
