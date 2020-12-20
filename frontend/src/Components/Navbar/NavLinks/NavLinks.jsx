@@ -5,6 +5,7 @@ import { Link as RouterLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 // Components
 import UserMenu from "./UserMenu/UserMenu";
+import AdminMenu from "./AdminMenu/AdminMenu";
 // Material UI
 import Link from "@material-ui/core/Link";
 // React icons
@@ -25,6 +26,7 @@ const NavLinks = ({ className }) => {
           cart
         </Link>
       </li>
+      {/* Show user menu if logged in, else show login link */}
       {userInfo ? (
         <UserMenu name={userInfo.name} />
       ) : (
@@ -36,6 +38,8 @@ const NavLinks = ({ className }) => {
           </Link>
         </li>
       )}
+      {/* Admin panel */}
+      {userInfo && userInfo.isAdmin && <AdminMenu />}
     </ul>
   );
 };

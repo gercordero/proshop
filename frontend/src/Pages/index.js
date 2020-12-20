@@ -8,3 +8,4 @@ export { default as ShippingPage } from "./ShippingPage/ShippingPage";
 export { default as PaymentPage } from "./PaymentPage/PaymentPage";
 export { default as PlaceOrderPage } from "./PlaceOrderPage/PlaceOrderPage";
 export { default as OrderPage } from "./OrderPage/OrderPage";
+export { default as UsersListPage } from "./UsersListPage/UsersListPage";

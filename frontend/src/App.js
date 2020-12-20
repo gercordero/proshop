@@ -15,6 +15,7 @@ import {
   PaymentPage,
   PlaceOrderPage,
   OrderPage,
+  UsersListPage,
 } from "./Pages";
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
             <Route path="/shipping" component={ShippingPage} />
             <Route path="/product/:id" component={ProductPage} />
             <Route path="/cart/:id?" component={CartPage} />
+            <Route path="/admin/userslist" component={UsersListPage} />
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={RegisterPage} />
             <Route path="/profile" component={ProfilePage} />

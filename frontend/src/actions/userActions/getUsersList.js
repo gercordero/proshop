@@ -8,7 +8,7 @@ import {
 // API URL
 const url = `${process.env.REACT_APP_BACKEND_URL}/api/users`;
 
-const getUserList = () => async (dispatch, getState) => {
+const getUsersList = () => async (dispatch, getState) => {
   try {
     // Dispatch get users list request
     dispatch({ type: USER_LIST_REQUEST });
@@ -41,4 +41,4 @@ const getUserList = () => async (dispatch, getState) => {
   }
 };
 
-export default getUserList;
+export default getUsersList;
