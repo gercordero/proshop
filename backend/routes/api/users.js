@@ -7,6 +7,7 @@ import {
   getUserProfile,
   updateUserProfile,
   getUsers,
+  deleteUser,
 } from "../../controllers/userContorller.js";
 // Protect private route
 import { protect, isAdmin } from "../../middleware/authMiddleware.js";
@@ -35,6 +36,11 @@ router.route("/profile").get(protect, getUserProfile);
 // @desc    Update User Profile
 // @access  Private
 router.route("/profile").put(protect, updateUserProfile);
+
+// @route   DELETE api/users/:userID
+// @desc    Delete an User.
+// @access  Private/Admin
+router.route("/:id").delete(protect, isAdmin, deleteUser);
 
 // @route   GET api/users
 // @desc    Get all users.

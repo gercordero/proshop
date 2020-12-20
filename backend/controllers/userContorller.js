@@ -82,7 +82,8 @@ export const getUserProfile = asyncHandler(async (req, res) => {
       isAdmin: user.isAdmin,
     });
   } else {
-    res.status(404).json({ msg: "User not found" });
+    res.status(404);
+    throw new Error("User not found");
   }
 });
 
@@ -108,7 +109,8 @@ export const updateUserProfile = asyncHandler(async (req, res) => {
       token: generateToken(updatedUser._id),
     });
   } else {
-    res.status(404).json({ msg: "User not found" });
+    res.status(404);
+    throw new Error("User not found");
   }
 });
 
@@ -119,4 +121,19 @@ export const getUsers = asyncHandler(async (req, res) => {
   const users = await User.find({});
 
   res.status(200).json(users);
+});
+
+// @route   DELETE api/users/:userID
+// @desc    Delete an User.
+// @access  Private/Admin
+export const deleteUser = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id);
+
+  if (user) {
+    await user.remove();
+    res.json({ message: "User removed" });
+  } else {
+    res.status(404);
+    throw new Error("User not found");
+  }
 });
