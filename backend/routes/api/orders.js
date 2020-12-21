@@ -33,7 +33,7 @@ router.route("/:id").get(protect, getOrder);
 // @route   PUT /api/orders/:id/deliver
 // @desc    Update order to delivered
 // @access  Private/Admin
-router.route("/:id/deliver").put(protect, admin, updateOrderToDelivered);
+router.route("/:id/deliver").put(protect, isAdmin, updateOrderToDelivered);
 
 // @route   PUT /api/orders/:id/pay
 // @desc    Update order to paid
