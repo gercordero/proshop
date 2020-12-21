@@ -7,6 +7,7 @@ import {
   updateOrderToPaid,
   getMyOrders,
   getAllOrders,
+  updateOrderToDelivered,
 } from "../../controllers/orderController.js";
 // Protect private route
 import { protect, isAdmin } from "../../middleware/authMiddleware.js";
@@ -28,6 +29,11 @@ router.route("/myorders").get(protect, getMyOrders);
 // @desc    Get order
 // @access  Private
 router.route("/:id").get(protect, getOrder);
+
+// @route   PUT /api/orders/:id/deliver
+// @desc    Update order to delivered
+// @access  Private/Admin
+router.route("/:id/deliver").put(protect, admin, updateOrderToDelivered);
 
 // @route   PUT /api/orders/:id/pay
 // @desc    Update order to paid
