@@ -25,6 +25,7 @@ import {
   orderMyListReducer,
   orderPayReducer,
   orderListReducer,
+  orderDeliverReducer,
 } from "./reducers/orderReducers";
 
 // All reducers
@@ -43,6 +44,7 @@ const reducer = combineReducers({
   orderPay: orderPayReducer,
   orderMyList: orderMyListReducer,
   orderList: orderListReducer,
+  orderDeliver: orderDeliverReducer,
 });
 
 // Geting cart items from local store

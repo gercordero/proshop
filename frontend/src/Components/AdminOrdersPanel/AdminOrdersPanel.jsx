@@ -1,6 +1,6 @@
 import React from "react";
 // React Icons
-import { FaTimes, FaCheck, FaRegEdit } from "react-icons/fa";
+import { FaTimes, FaRegEdit } from "react-icons/fa";
 // Material UI
 import { withStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -71,7 +71,7 @@ const AdminOrdersPanel = ({ orders, editOrderHandler }) => {
               {/* ORDER IS DELIVERED? */}
               <StyledTableCell>
                 {order.isDelivered ? (
-                  new Date(order.DeliveredAt).toDateString()
+                  new Date(order.deliveredAt).toDateString()
                 ) : (
                   <FaTimes style={{ color: "red" }} />
                 )}

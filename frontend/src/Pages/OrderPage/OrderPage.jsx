@@ -5,11 +5,12 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 // Redux action
 import { resetCart } from "../../actions/cartActions";
-import { getOrder, payOrder } from "../../actions/orderActions";
+import { getOrder, payOrder, deliverOrder } from "../../actions/orderActions";
 // Redux action constants
 import {
   ORDER_CREATE_RESET,
   ORDER_PAY_RESET,
+  ORDER_DELIVER_RESET,
 } from "../../constants/orderConstants";
 // Components
 import { Progress, InfoPanel, CartItem, OrderSumary } from "../../Components";
@@ -18,6 +19,7 @@ import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Alert from "@material-ui/lab/Alert";
+import Button from "@material-ui/core/Button";
 // Styled components
 import { PageSection } from "../styles/PageSection";
 
@@ -34,6 +36,10 @@ const OrderPage = ({ match }) => {
   // ORDER PAY
   const { loading: loadingPay, success: successPay } = useSelector(
     (state) => state.orderPay
+  );
+  // ORDER DELIVER
+  const { loading: loadingDeliver, success: successDeliver } = useSelector(
+    (state) => state.orderDeliver
   );
   const dispatch = useDispatch();
 
@@ -59,6 +65,11 @@ const OrderPage = ({ match }) => {
       dispatch({ type: ORDER_PAY_RESET });
     }
 
+    if (successDeliver) {
+      dispatch({ type: ORDER_DELIVER_RESET });
+      dispatch(getOrder(orderId));
+    }
+
     // On first render will be no "orderGet" so we dispatch getOrder
     if (!order || order._id !== orderId || successPay) {
       dispatch(getOrder(orderId));
@@ -69,10 +80,16 @@ const OrderPage = ({ match }) => {
         setSdkReady(true);
       }
     }
-  }, [dispatch, orderId, order, sdkReady, successPay]);
+  }, [dispatch, orderId, order, sdkReady, successPay, successDeliver]);
 
   const handleSuccesPayment = (paymentResult) => {
     dispatch(payOrder(orderId, paymentResult));
+  };
+
+  const handleDeliver = () => {
+    if (window.confirm("Are you sure?")) {
+      dispatch(deliverOrder(orderId));
+    }
   };
 
   let panelProps = {};
@@ -87,7 +104,7 @@ const OrderPage = ({ match }) => {
       isPaid: order.isPaid,
       paidAt: order.paidAt,
       isDelivered: order.isDelivered,
-      deliveredAt: order.deliveridAt,
+      deliveredAt: order.deliveredAt,
       isOrderPage: true,
     };
 
@@ -139,6 +156,15 @@ const OrderPage = ({ match }) => {
                     {error}
                   </Alert>
                 )}
+                {/* ADMIN MARK AS DELIVERED BUTTON */}
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  style={{ fontWeight: "bold", marginTop: "2rem" }}
+                  onClick={handleDeliver}
+                >
+                  {loadingDeliver ? <Progress /> : "Mark As Delivered"}
+                </Button>
               </Grid>
             </Grid>
           </>

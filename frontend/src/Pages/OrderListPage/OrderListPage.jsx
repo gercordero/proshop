@@ -37,11 +37,13 @@ const OrderListPage = ({ history }) => {
     editOrderHandler,
   };
 
+  console.log(orders);
+
   return (
     <PageSection>
       <Container>
         <Typography variant="h4" component="h2">
-          Users
+          Orders
         </Typography>
         {loading ? (
           <Progress />
