@@ -23,7 +23,7 @@ import Button from "@material-ui/core/Button";
 // Styled components
 import { PageSection } from "../styles/PageSection";
 
-const OrderPage = ({ match }) => {
+const OrderPage = ({ match, history }) => {
   // Order id from url
   const orderId = match.params.id;
 
@@ -31,6 +31,8 @@ const OrderPage = ({ match }) => {
   const [sdkReady, setSdkReady] = useState(false);
 
   // Redux state
+  // GET USER DETAILS
+  const { userInfo } = useSelector((state) => state.userLogin);
   // ORDER GET
   const { order, loading, error } = useSelector((state) => state.orderGet);
   // ORDER PAY
@@ -44,6 +46,11 @@ const OrderPage = ({ match }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // Redirect
+    if (!userInfo || !userInfo.name) {
+      history.push("/login");
+    }
+
     const addPaypalScript = async () => {
       const { data: clientId } = await axios.get(
         `${process.env.REACT_APP_BACKEND_URL}/api/config/paypal`
@@ -80,7 +87,7 @@ const OrderPage = ({ match }) => {
         setSdkReady(true);
       }
     }
-  }, [dispatch, orderId, order, sdkReady, successPay, successDeliver]);
+  }, [history, dispatch, orderId, order, sdkReady, successPay, successDeliver]);
 
   const handleSuccesPayment = (paymentResult) => {
     dispatch(payOrder(orderId, paymentResult));
@@ -157,14 +164,19 @@ const OrderPage = ({ match }) => {
                   </Alert>
                 )}
                 {/* ADMIN MARK AS DELIVERED BUTTON */}
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  style={{ fontWeight: "bold", marginTop: "2rem" }}
-                  onClick={handleDeliver}
-                >
-                  {loadingDeliver ? <Progress /> : "Mark As Delivered"}
-                </Button>
+                {userInfo &&
+                  userInfo.isAdmin &&
+                  order.isPaid &&
+                  !order.isDelivered && (
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      style={{ fontWeight: "bold", marginTop: "2rem" }}
+                      onClick={handleDeliver}
+                    >
+                      {loadingDeliver ? <Progress /> : "Mark As Delivered"}
+                    </Button>
+                  )}
               </Grid>
             </Grid>
           </>
