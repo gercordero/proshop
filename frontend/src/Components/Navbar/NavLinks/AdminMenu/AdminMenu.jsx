@@ -47,6 +47,11 @@ const AdminMenu = () => {
             Users List
           </StyledLink>
         </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <StyledLink component={RouterLink} to="/admin/orderslist">
+            Orders List
+          </StyledLink>
+        </MenuItem>
       </Menu>
     </>
   );

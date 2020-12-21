@@ -26,6 +26,8 @@ const NavLinks = ({ className }) => {
           cart
         </Link>
       </li>
+      {/* Admin panel */}
+      {userInfo && userInfo.isAdmin && <AdminMenu />}
       {/* Show user menu if logged in, else show login link */}
       {userInfo ? (
         <UserMenu name={userInfo.name} />
@@ -38,8 +40,6 @@ const NavLinks = ({ className }) => {
           </Link>
         </li>
       )}
-      {/* Admin panel */}
-      {userInfo && userInfo.isAdmin && <AdminMenu />}
     </ul>
   );
 };

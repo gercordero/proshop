@@ -16,6 +16,7 @@ import {
   PlaceOrderPage,
   OrderPage,
   UsersListPage,
+  OrderListPage,
 } from "./Pages";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
       <MuiThemeProvider theme={theme}>
         <ThemeProvider theme={theme}>
           <Layout>
+            <Route path="/admin/orderslist" component={OrderListPage} />
             <Route path="/order/:id" component={OrderPage} />
             <Route path="/placeorder" component={PlaceOrderPage} />
             <Route path="/payment" component={PaymentPage} />

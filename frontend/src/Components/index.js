@@ -18,3 +18,4 @@ export { default as PaymentForm } from "./PaymentForm/PaymentForm";
 export { default as InfoPanel } from "./InfoPanel/InfoPanel";
 export { default as OrderSumary } from "./OrderSumary/OrderSumary";
 export { default as UsersPanel } from "./UsersPanel/UsersPanel";
+export { default as AdminOrdersPanel } from "./AdminOrdersPanel/AdminOrdersPanel";

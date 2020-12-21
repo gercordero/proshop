@@ -4,7 +4,7 @@ import Link from "@material-ui/core/Link";
 export const MenuButton = styled.p`
   color: ${(props) => props.theme.palette.white.main};
   text-transform: uppercase;
-  margin-left: 2rem;
+  margin-right: 2rem;
 
   &:hover {
     cursor: pointer;
