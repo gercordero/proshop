@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 // React Router
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, Route } from "react-router-dom";
+// Components
+import { SearchBox } from "../";
 // Meterial UI
 import Link from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
@@ -27,6 +29,8 @@ const Navbar = () => {
               proshop
             </Typography>
           </Link>
+          {/* SEARCH */}
+          <Route render={({ history }) => <SearchBox history={history} />} />
         </StyledHeader>
         <ToggleBtnContainer>
           <ToggleBtn type="button" onClick={() => setIsOpen(!isOpen)}>

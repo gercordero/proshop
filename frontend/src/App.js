@@ -36,6 +36,7 @@ function App() {
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={RegisterPage} />
             <Route path="/profile" component={ProfilePage} />
+            <Route path="/search/:keyword" component={HomePage} />
             <Route path="/" component={HomePage} exact />
           </Layout>
         </ThemeProvider>

@@ -21,3 +21,4 @@ export { default as UsersPanel } from "./UsersPanel/UsersPanel";
 export { default as AdminOrdersPanel } from "./AdminOrdersPanel/AdminOrdersPanel";
 export { default as Reviews } from "./Reviews/Reviews";
 export { default as WriteReview } from "./WriteReview/WriteReview";
+export { default as SearchBox } from "./SearchBox/SearchBox";

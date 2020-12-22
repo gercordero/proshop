@@ -11,13 +11,14 @@ export const StyledNav = styled.nav`
 
 export const StyledContainer = styled(Container)`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
 `;
 
 export const StyledHeader = styled.header`
   grid-column: 1/2;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   & > a > h1 {
     color: ${(props) => props.theme.palette.white.main};
     text-transform: uppercase;
