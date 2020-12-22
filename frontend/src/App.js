@@ -26,17 +26,22 @@ function App() {
         <ThemeProvider theme={theme}>
           <Layout>
             <Route path="/admin/orderslist" component={OrderListPage} />
+            <Route path="/admin/userslist" component={UsersListPage} />
             <Route path="/order/:id" component={OrderPage} />
             <Route path="/placeorder" component={PlaceOrderPage} />
             <Route path="/payment" component={PaymentPage} />
             <Route path="/shipping" component={ShippingPage} />
-            <Route path="/product/:id" component={ProductPage} />
             <Route path="/cart/:id?" component={CartPage} />
-            <Route path="/admin/userslist" component={UsersListPage} />
+            <Route path="/profile" component={ProfilePage} />
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={RegisterPage} />
-            <Route path="/profile" component={ProfilePage} />
-            <Route path="/search/:keyword" component={HomePage} />
+            <Route path="/product/:id" component={ProductPage} />
+            <Route
+              path="/search/:keyword/page/:pageNumber"
+              component={HomePage}
+            />
+            <Route path="/search/:keyword" component={HomePage} exact />
+            <Route path="/page/:pageNumber" component={HomePage} />
             <Route path="/" component={HomePage} exact />
           </Layout>
         </ThemeProvider>

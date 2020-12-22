@@ -8,7 +8,7 @@ import Product from "../models/productModel.js";
 // @access  Public
 export const getProducts = asyncHandler(async (req, res) => {
   // Pagination config
-  const pageSize = 10;
+  const pageSize = 2;
   const page = Number(req.query.pageNumber) || 1;
 
   // Keyword for filtering products
@@ -17,7 +17,7 @@ export const getProducts = asyncHandler(async (req, res) => {
     : {};
 
   // Get total amount of products
-  const count = await Product.count({ ...keyword });
+  const count = await Product.countDocuments({ ...keyword });
   // Get products
   const products = await Product.find({ ...keyword }) //Find products
     .limit(pageSize) // Limit the amount of products we get based on the page size

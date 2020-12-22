@@ -8,13 +8,15 @@ import {
 const url = `${process.env.REACT_APP_BACKEND_URL}/api/products`;
 
 // Get products list
-const listProducts = (keyword = "") => async (dispatch) => {
+const listProducts = (keyword = "", pageNumber = "") => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
 
-    const { data } = await axios.get(`${url}?keyword=${keyword}`);
+    const { data: products } = await axios.get(
+      `${url}?keyword=${keyword}&pageNumber=${pageNumber}`
+    );
 
-    dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
+    dispatch({ type: PRODUCT_LIST_SUCCESS, payload: products });
   } catch (error) {
     dispatch({
       type: PRODUCT_LIST_FAIL,

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 // Components
-import { Products, Progress } from "../../Components";
+import { Products, Progress, Paginate } from "../../Components";
 // Material UI
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
@@ -17,14 +17,17 @@ const HomePage = ({ match }) => {
   // Search product id
   const keyword = match.params.keyword;
 
+  // Get page number
+  const pageNumber = match.params.pageNumber || 1;
+
   // Redux state
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
-  const { loading, error, products } = productList;
+  const { loading, error, products, pages } = productList;
 
   useEffect(() => {
-    dispatch(listProducts(keyword));
-  }, [dispatch, keyword]);
+    dispatch(listProducts(keyword, pageNumber));
+  }, [dispatch, keyword, pageNumber]);
 
   return (
     <PageSection>
@@ -45,6 +48,8 @@ const HomePage = ({ match }) => {
             ))}
           </Grid>
         )}
+
+        <Paginate pages={pages} keyword={keyword} />
       </Container>
     </PageSection>
   );
