@@ -16,7 +16,7 @@ const Rating = ({ rating, numReviews }) => {
       {ratings.map((desiredRating, index) => (
         <Star key={index} rating={rating} desiredRating={desiredRating} />
       ))}
-      <span>{numReviews && ` ${numReviews} reviews`}</span>
+      {numReviews && <span>{numReviews && ` ${numReviews} reviews`}</span>}
     </StarsContainer>
   );
 };
