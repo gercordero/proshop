@@ -7,13 +7,23 @@ import Product from "../models/productModel.js";
 // @desc    Get products
 // @access  Public
 export const getProducts = asyncHandler(async (req, res) => {
+  // Pagination config
+  const pageSize = 10;
+  const page = Number(req.query.pageNumber) || 1;
+
+  // Keyword for filtering products
   const keyword = req.query.keyword
     ? { name: { $regex: req.query.keyword, $options: "i" } }
     : {};
 
-  const products = await Product.find({ ...keyword });
+  // Get total amount of products
+  const count = await Product.count({ ...keyword });
+  // Get products
+  const products = await Product.find({ ...keyword }) //Find products
+    .limit(pageSize) // Limit the amount of products we get based on the page size
+    .skip(pageSize * (page - 1)); // When we are on page 1 we get the first 10 products but then if we are on page 2 we will also get the first 10 products. So to solve the problem we skip by doing some maths.
 
-  res.json(products);
+  res.json({ products, page, pages: Math.ceil(count / pageSize) });
 });
 
 // @route   GET api/produtcs/:id
