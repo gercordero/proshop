@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import morgan from "morgan";
 import connectDB from "./config/db.js";
 import { errorsHandler, notFound } from "./middleware/errors.js";
 
@@ -20,7 +21,9 @@ app.set("port", process.env.PORT || 4000);
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
-
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+}
 // Config Routes
 app.get("/api/config/paypal", (req, res) => {
   res.send(process.env.PAYPAL_CLIENT_ID);
