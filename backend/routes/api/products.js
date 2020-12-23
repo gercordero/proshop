@@ -5,6 +5,7 @@ import {
   getProducts,
   getProductById,
   createProductReview,
+  getTopRatedProducts,
 } from "../../controllers/productController.js";
 // Protect private route
 import { protect } from "../../middleware/authMiddleware.js";
@@ -21,6 +22,11 @@ router.get("/test", (req, res) => res.json({ msg: "Products Works" }));
 // @desc    Create new review
 // @access  Private
 router.route("/:id/reviews").post(protect, createProductReview);
+
+// @route   GET api/produtcs/toprated
+// @desc    Get top rated products
+// @access  Public
+router.route("/toprated").get(getTopRatedProducts);
 
 // @route   GET api/produtcs/:id
 // @desc    Get single product
