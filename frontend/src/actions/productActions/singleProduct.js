@@ -1,8 +1,8 @@
 import axios from "axios";
 import {
-  SINGLE_PRODUCT_REQUEST,
-  SINGLE_PRODUCT_SUCCESS,
-  SINGLE_PRODUCT_FAIL,
+  PRODUCT_SINGLE_REQUEST,
+  PRODUCT_SINGLE_SUCCESS,
+  PRODUCT_SINGLE_FAIL,
 } from "../../constants/productConstants";
 
 const url = `${process.env.REACT_APP_BACKEND_URL}/api/products`;
@@ -10,14 +10,14 @@ const url = `${process.env.REACT_APP_BACKEND_URL}/api/products`;
 // Get single product
 const singleProduct = (id) => async (dispatch) => {
   try {
-    dispatch({ type: SINGLE_PRODUCT_REQUEST });
+    dispatch({ type: PRODUCT_SINGLE_REQUEST });
 
     const { data } = await axios.get(url + "/" + id);
 
-    dispatch({ type: SINGLE_PRODUCT_SUCCESS, payload: data });
+    dispatch({ type: PRODUCT_SINGLE_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
-      type: SINGLE_PRODUCT_FAIL,
+      type: PRODUCT_SINGLE_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

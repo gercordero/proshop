@@ -1,19 +1,19 @@
 import {
-  SINGLE_PRODUCT_REQUEST,
-  SINGLE_PRODUCT_SUCCESS,
-  SINGLE_PRODUCT_FAIL,
+  PRODUCT_SINGLE_REQUEST,
+  PRODUCT_SINGLE_SUCCESS,
+  PRODUCT_SINGLE_FAIL,
 } from "../../constants/productConstants";
 
-const singleProductReducer = (
+const productSingleReducer = (
   state = { loading: true, product: { reviews: [] } },
   action
 ) => {
   switch (action.type) {
-    case SINGLE_PRODUCT_REQUEST:
+    case PRODUCT_SINGLE_REQUEST:
       return { loading: true, product: {} };
-    case SINGLE_PRODUCT_SUCCESS:
+    case PRODUCT_SINGLE_SUCCESS:
       return { loading: false, product: action.payload };
-    case SINGLE_PRODUCT_FAIL:
+    case PRODUCT_SINGLE_FAIL:
       return { loading: false, product: action.payload };
 
     default:
@@ -21,4 +21,4 @@ const singleProductReducer = (
   }
 };
 
-export default singleProductReducer;
+export default productSingleReducer;

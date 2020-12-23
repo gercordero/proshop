@@ -31,7 +31,7 @@ const ProductPage = ({ match, history }) => {
 
   // Single product state
   const { loading, error, product } = useSelector(
-    (state) => state.singleProduct
+    (state) => state.productSingle
   );
 
   // Review state

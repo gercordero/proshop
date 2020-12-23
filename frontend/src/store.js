@@ -5,8 +5,9 @@ import thunk from "redux-thunk";
 // Product reducers
 import {
   productListReducer,
-  singleProductReducer,
+  productSingleReducer,
   productReviewCreateReducer,
+  productTopRatedReducer,
 } from "./reducers/productReducers";
 // Cart reducers
 import { cartReducer } from "./reducers/cartReducers";
@@ -32,7 +33,8 @@ import {
 // All reducers
 const reducer = combineReducers({
   productList: productListReducer,
-  singleProduct: singleProductReducer,
+  productSingle: productSingleReducer,
+  productTopRated: productTopRatedReducer,
   productReviewCreate: productReviewCreateReducer,
   cart: cartReducer,
   userLogin: userLoginReducer,

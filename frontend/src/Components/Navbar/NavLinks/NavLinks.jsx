@@ -1,10 +1,9 @@
 import React from "react";
 // React Router
-import { Link as RouterLink, Route } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 // Redux
 import { useSelector } from "react-redux";
 // Components
-import { SearchBox } from "../../";
 import UserMenu from "./UserMenu/UserMenu";
 import AdminMenu from "./AdminMenu/AdminMenu";
 // Material UI
