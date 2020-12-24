@@ -12,9 +12,9 @@ const singleProduct = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_SINGLE_REQUEST });
 
-    const { data } = await axios.get(url + "/" + id);
+    const { data: products } = await axios.get(url + "/" + id);
 
-    dispatch({ type: PRODUCT_SINGLE_SUCCESS, payload: data });
+    dispatch({ type: PRODUCT_SINGLE_SUCCESS, payload: products });
   } catch (error) {
     dispatch({
       type: PRODUCT_SINGLE_FAIL,

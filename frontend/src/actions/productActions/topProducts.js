@@ -5,15 +5,15 @@ import {
   PRODUCT_TOP_FAIL,
 } from "../../constants/productConstants";
 
-const url = `${process.env.REACT_APP_BACKEND_URL}/api/products`;
+const url = `${process.env.REACT_APP_BACKEND_URL}/api/products/toprated`;
 
 const topProducts = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_TOP_REQUEST });
 
-    const { data } = await axios.get(url);
+    const { data: products } = await axios.get(url);
 
-    dispatch({ type: PRODUCT_TOP_SUCCESS, payload: data });
+    dispatch({ type: PRODUCT_TOP_SUCCESS, payload: products });
   } catch (error) {
     dispatch({
       type: PRODUCT_TOP_FAIL,

@@ -8,7 +8,7 @@ import Product from "../models/productModel.js";
 // @access  Public
 export const getProducts = asyncHandler(async (req, res) => {
   // Pagination config
-  const pageSize = 2;
+  const pageSize = 10;
   const page = Number(req.query.pageNumber) || 1;
 
   // Keyword for filtering products
@@ -32,7 +32,6 @@ export const getProducts = asyncHandler(async (req, res) => {
 export const getTopRatedProducts = asyncHandler(async (req, res) => {
   // Get top rated products
   const products = await Product.find({}).sort({ rating: -1 }).limit(3);
-  console.log("HELLO");
   res.json(products);
 });
 
@@ -78,7 +77,6 @@ export const createProductReview = asyncHandler(async (req, res) => {
       comment,
       user: req.user._id,
     };
-    console.log(review);
 
     // push review to product reviews list
     product.reviews.push(review);

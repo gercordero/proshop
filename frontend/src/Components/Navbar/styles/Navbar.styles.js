@@ -3,7 +3,7 @@ import Container from "@material-ui/core/Container";
 import NavLinks from "../NavLinks/NavLinks";
 
 export const StyledNav = styled.nav`
-  width: 100vw;
+  width: 100%;
   z-index: 100;
   padding: 1rem 0;
   background-color: ${(props) => props.theme.palette.primary.main};

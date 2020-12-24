@@ -23,3 +23,4 @@ export { default as Reviews } from "./Reviews/Reviews";
 export { default as WriteReview } from "./WriteReview/WriteReview";
 export { default as SearchBox } from "./SearchBox/SearchBox";
 export { default as Paginate } from "./Paginate/Paginate";
+export { default as ProductCarousel } from "./ProductCarousel/ProductCarousel";

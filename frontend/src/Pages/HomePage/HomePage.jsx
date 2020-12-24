@@ -1,8 +1,15 @@
 import React, { useEffect } from "react";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
+// Redux actions
+import { listProducts, topProducts } from "../../actions/productActions";
 // Components
-import { Products, Progress, Paginate } from "../../Components";
+import {
+  Products,
+  Progress,
+  Paginate,
+  ProductCarousel,
+} from "../../Components";
 // Material UI
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
@@ -10,8 +17,6 @@ import Typography from "@material-ui/core/Typography";
 import Alert from "@material-ui/lab/Alert";
 // Styled components
 import { PageSection } from "../styles/PageSection";
-// Products Data
-import { listProducts } from "../../actions/productActions";
 
 const HomePage = ({ match }) => {
   // Search product id
@@ -22,23 +27,44 @@ const HomePage = ({ match }) => {
 
   // Redux state
   const dispatch = useDispatch();
-  const productList = useSelector((state) => state.productList);
-  const { loading, error, products, pages } = productList;
+  const { loading, error, products, pages } = useSelector(
+    (state) => state.productList
+  );
+  const {
+    loading: topRatedLoading,
+    error: topRatedError,
+    products: topRatedProducts,
+  } = useSelector((state) => state.productTopRated);
 
   useEffect(() => {
     dispatch(listProducts(keyword, pageNumber));
+    dispatch(topProducts());
   }, [dispatch, keyword, pageNumber]);
 
   return (
     <PageSection>
       <Container>
-        <Typography variant="h2" gutterBottom>
+        {/* TOP PRODUCTS CAROUSEL */}
+        {topRatedLoading ? (
+          <Progress />
+        ) : error ? (
+          <Alert severity="error">{topRatedError}</Alert>
+        ) : (
+          !keyword && <ProductCarousel products={topRatedProducts} />
+        )}
+
+        {/* ALL PRODUCTS */}
+        <Typography variant="h3" component="h1" gutterBottom>
           Latest products
         </Typography>
         {loading ? (
           <Progress />
         ) : error ? (
           <Alert severity="error">{error}</Alert>
+        ) : products.length === 0 ? (
+          <Alert severity="info">
+            No products with keyword "{keyword}" found!
+          </Alert>
         ) : (
           <Grid container spacing={3}>
             {products.map((product) => (

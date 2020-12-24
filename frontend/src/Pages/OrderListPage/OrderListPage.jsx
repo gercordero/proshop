@@ -37,8 +37,6 @@ const OrderListPage = ({ history }) => {
     editOrderHandler,
   };
 
-  console.log(orders);
-
   return (
     <PageSection>
       <Container>
